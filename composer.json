@@ -79,7 +79,7 @@
         "bower-asset/inputmask": "^5.0.8 ",
         "bower-asset/punycode": "^2.2",
         "bower-asset/yii2-pjax": "~2.0.1",
-        "paragonie/random_compat": ">=1"
+        "paragonie/random_compat": ">=9.99.100"
     },
     "require-dev": {
         "cweagans/composer-patches": "^1.7",
