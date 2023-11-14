@@ -1,0 +1,47 @@
+name: composer
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: "PHP 8.2 on ubuntu 22.04"
+    if: ${{ !contains(github.event.head_commit.message, 'skip composer') }}
+
+    runs-on: ubuntu-latest
+
+    # container: charescape/web:ubuntu22-php82.rv1
+
+    # env:
+    #   PHP_CMD: '/usr/local/php/bin/php'
+    #   COMPOSER_CMD: '/usr/local/bin/composer'
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          tools: composer,composer-unused,rector
+
+      - run: composer self-update -vvv
+
+      - run: git config user.email "charescape@outlook.com"
+      - run: git config user.name  "charescape"
+
+      - run: composer redo-install
+
+      - run: composer-unused
+        continue-on-error: true
+
+      - run: git status
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: "main"
+          commit_message: "auto renew composer.lock"

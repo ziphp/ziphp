@@ -109,7 +109,8 @@
         "allow-plugins": {
             "cweagans/composer-patches": true,
             "yiisoft/yii2-composer": true
-        }
+        },
+        "sort-packages": true
     },
     "bin": [
         "framework/yii"
@@ -132,5 +133,11 @@
                 "Fix PHP 8.1 compatibility": "https://yiisoft.github.io/phpunit-patches/phpunit_php81.patch"
             }
         }
+    },
+    "scripts": {
+        "redo-install": [
+            "rm -f composer.lock",
+            "@composer install -vvv"
+        ]
     }
 }
