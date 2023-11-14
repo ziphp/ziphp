@@ -13,7 +13,7 @@
 				<directory>./tests</directory>
 			</testsuite>
 		</testsuites>
-		<filter>
+		<coverage>
             <include>
                 <directory suffix=".php">framework/</directory>
             </include>
@@ -24,5 +24,5 @@
 				<directory suffix="Exception.php">framework/base</directory>
 				<directory suffix=".php">framework/bootstrap</directory>
 			</exclude>
-		</filter>
+		</coverage>
 </phpunit>
