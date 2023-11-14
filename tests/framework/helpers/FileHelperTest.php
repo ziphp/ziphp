@@ -418,23 +418,23 @@ class FileHelperTest extends TestCase
 
         $basePath = $this->testFilePath . DIRECTORY_SEPARATOR . $dirName . DIRECTORY_SEPARATOR;
         $this->assertFileExists($basePath . 'file');
-        $this->assertTrue(is_dir($basePath . 'directory'));
+        $this->assertDirectoryExists($basePath . 'directory');
         $this->assertFileExists($basePath . 'directory' . DIRECTORY_SEPARATOR . 'standard-file-1');
-        $this->assertTrue(is_dir($basePath . 'symlinks'));
+        $this->assertDirectoryExists($basePath . 'symlinks');
         $this->assertFileExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'standard-file-2');
         $this->assertFileExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-file');
-        $this->assertTrue(is_dir($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-directory'));
+        $this->assertDirectoryExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-directory');
         $this->assertFileExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-directory' . DIRECTORY_SEPARATOR . 'standard-file-1');
 
         FileHelper::removeDirectory($basePath . 'symlinks');
 
         $this->assertFileExists($basePath . 'file');
-        $this->assertTrue(is_dir($basePath . 'directory'));
+        $this->assertDirectoryExists($basePath . 'directory');
         $this->assertFileExists($basePath . 'directory' . DIRECTORY_SEPARATOR . 'standard-file-1'); // symlinked directory still have it's file
-        $this->assertFalse(is_dir($basePath . 'symlinks'));
+        $this->assertDirectoryNotExists($basePath . 'symlinks');
         $this->assertFileNotExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'standard-file-2');
         $this->assertFileNotExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-file');
-        $this->assertFalse(is_dir($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-directory'));
+        $this->assertDirectoryNotExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-directory');
         $this->assertFileNotExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-directory' . DIRECTORY_SEPARATOR . 'standard-file-1');
     }
 
@@ -461,23 +461,23 @@ class FileHelperTest extends TestCase
 
         $basePath = $this->testFilePath . DIRECTORY_SEPARATOR . $dirName . DIRECTORY_SEPARATOR;
         $this->assertFileExists($basePath . 'file');
-        $this->assertTrue(is_dir($basePath . 'directory'));
+        $this->assertDirectoryExists($basePath . 'directory');
         $this->assertFileExists($basePath . 'directory' . DIRECTORY_SEPARATOR . 'standard-file-1');
-        $this->assertTrue(is_dir($basePath . 'symlinks'));
+        $this->assertDirectoryExists($basePath . 'symlinks');
         $this->assertFileExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'standard-file-2');
         $this->assertFileExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-file');
-        $this->assertTrue(is_dir($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-directory'));
+        $this->assertDirectoryExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-directory');
         $this->assertFileExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-directory' . DIRECTORY_SEPARATOR . 'standard-file-1');
 
         FileHelper::removeDirectory($basePath . 'symlinks', ['traverseSymlinks' => true]);
 
         $this->assertFileExists($basePath . 'file');
-        $this->assertTrue(is_dir($basePath . 'directory'));
+        $this->assertDirectoryExists($basePath . 'directory');
         $this->assertFileNotExists($basePath . 'directory' . DIRECTORY_SEPARATOR . 'standard-file-1'); // symlinked directory doesn't have it's file now
-        $this->assertFalse(is_dir($basePath . 'symlinks'));
+        $this->assertDirectoryNotExists($basePath . 'symlinks');
         $this->assertFileNotExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'standard-file-2');
         $this->assertFileNotExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-file');
-        $this->assertFalse(is_dir($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-directory'));
+        $this->assertDirectoryNotExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-directory');
         $this->assertFileNotExists($basePath . 'symlinks' . DIRECTORY_SEPARATOR . 'symlinked-directory' . DIRECTORY_SEPARATOR . 'standard-file-1');
     }
 

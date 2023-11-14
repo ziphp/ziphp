@@ -138,10 +138,11 @@ class CacheControllerTest extends TestCase
     }
 
     /**
-     * @expectedException \yii\console\Exception
      */
     public function testNothingToFlushException()
     {
+        $this->expectException(\yii\console\Exception::class);
+
         $this->_cacheController->actionFlush();
     }
 

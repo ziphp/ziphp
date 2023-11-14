@@ -55,7 +55,7 @@ Exception: yii\web\NotFoundHttpException', $out);
 
         $this->assertcontains('Test Exception', $out);
 
-        $this->assertTrue(is_string(Yii::$app->response->data));
+        $this->assertIsString(Yii::$app->response->data);
         $this->assertcontains("Exception 'Exception' with message 'Test Exception'", Yii::$app->response->data);
     }
 
@@ -74,7 +74,7 @@ Exception: yii\web\NotFoundHttpException', $out);
 
         $outArray = Yii::$app->response->data;
 
-        $this->assertTrue(is_array(Yii::$app->response->data));
+        $this->assertIsArray(Yii::$app->response->data);
 
         $this->assertEquals('Exception', $outArray['name']);
         $this->assertEquals('Test Exception', $outArray['message']);

@@ -48,10 +48,11 @@ class ArrayFixtureTest extends TestCase
     }
 
     /**
-     * @expectedException \yii\base\InvalidConfigException
      */
     public function testWrongDataFileException()
     {
+        $this->expectException(\yii\base\InvalidConfigException::class);
+
         $this->_fixture->dataFile = 'wrong/fixtures/data/path/alias';
         $this->_fixture->load();
     }

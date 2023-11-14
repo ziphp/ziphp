@@ -225,10 +225,11 @@ abstract class ConnectionTest extends DatabaseTestCase
     }
 
     /**
-     * @expectedException \Exception
      */
     public function testTransactionShortcutException()
     {
+        $this->expectException(\Exception::class);
+
         $connection = $this->getConnection(true);
         $connection->transaction(function () use ($connection) {
             $connection->createCommand()->insert('profile', ['description' => 'test transaction shortcut'])->execute();

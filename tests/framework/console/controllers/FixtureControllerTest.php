@@ -216,18 +216,20 @@ class FixtureControllerTest extends DatabaseTestCase
     }
 
     /**
-     * @expectedException \yii\console\Exception
      */
     public function testNoFixturesWereFoundInLoad()
     {
+        $this->expectException(\yii\console\Exception::class);
+
         $this->_fixtureController->actionLoad(['NotExistingFixture']);
     }
 
     /**
-     * @expectedException \yii\console\Exception
      */
     public function testNoFixturesWereFoundInUnload()
     {
+        $this->expectException(\yii\console\Exception::class);
+
         $this->_fixtureController->actionUnload(['NotExistingFixture']);
     }
 

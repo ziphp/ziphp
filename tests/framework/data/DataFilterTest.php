@@ -36,14 +36,14 @@ class DataFilterTest extends TestCase
 
         $builder->setSearchModel(Singer::className());
         $model = $builder->getSearchModel();
-        $this->assertTrue($model instanceof Singer);
+        $this->assertInstanceOf(Singer::class, $model);
 
         $builder->setSearchModel([
             'class' => Singer::className(),
             'scenario' => 'search',
         ]);
         $model = $builder->getSearchModel();
-        $this->assertTrue($model instanceof Singer);
+        $this->assertInstanceOf(Singer::class, $model);
         $this->assertEquals('search', $model->getScenario());
 
         $builder->setSearchModel(function () {
@@ -52,7 +52,7 @@ class DataFilterTest extends TestCase
                 ->addRule(['price'], 'number');
         });
         $model = $builder->getSearchModel();
-        $this->assertTrue($model instanceof DynamicModel);
+        $this->assertInstanceOf(DynamicModel::class, $model);
 
         $this->expectException('yii\base\InvalidConfigException');
         $builder->setSearchModel(new \stdClass());

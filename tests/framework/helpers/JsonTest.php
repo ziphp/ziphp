@@ -205,12 +205,13 @@ PHP
     }
 
     /**
-     * @expectedException \yii\base\InvalidArgumentException
-     * @expectedExceptionMessage Invalid JSON data.
      * @covers ::decode
      */
     public function testDecodeInvalidParamException()
     {
+        $this->expectException(\yii\base\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid JSON data.');
+
         Json::decode([]);
     }
 

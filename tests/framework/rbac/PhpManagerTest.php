@@ -137,10 +137,11 @@ class PhpManagerTest extends ManagerTestCase
     }
 
     /**
-     * @expectedException \yii\base\InvalidParamException
      */
     public function testOverwriteName()
     {
+        $this->expectException(\yii\base\InvalidParamException::class);
+
         $this->prepareData();
         $name = 'readPost';
         $permission = $this->auth->getPermission($name);

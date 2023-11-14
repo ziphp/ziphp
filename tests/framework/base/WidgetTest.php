@@ -40,7 +40,7 @@ class WidgetTest extends TestCase
         ob_implicit_flush(false);
 
         $widget = TestWidget::begin(['id' => 'test']);
-        $this->assertTrue($widget instanceof TestWidget);
+        $this->assertInstanceOf(TestWidget::class, $widget);
         TestWidget::end();
 
         $output = ob_get_clean();
@@ -64,7 +64,7 @@ class WidgetTest extends TestCase
         ob_implicit_flush(false);
 
         $widget = TestWidgetB::begin(['id' => 'test']);
-        $this->assertTrue($widget instanceof TestWidget);
+        $this->assertInstanceOf(TestWidget::class, $widget);
         TestWidgetB::end();
 
         $output = ob_get_clean();

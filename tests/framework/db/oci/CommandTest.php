@@ -276,7 +276,7 @@ class CommandTest extends \yiiunit\framework\db\CommandTest
                 'IN (1,2,3) ORDER BY [[int_col]]'
             )->queryAll();
 
-            $this->assertEquals(3, \count($data));
+            $this->assertCount(3, $data);
             $this->assertEquals(1, $data[0]['int_col']);
             $this->assertEquals(2, $data[1]['int_col']);
             $this->assertEquals(3, $data[2]['int_col']);

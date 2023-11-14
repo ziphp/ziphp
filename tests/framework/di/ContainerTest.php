@@ -444,10 +444,11 @@ class ContainerTest extends TestCase
     }
 
     /**
-     * @expectedException \yii\base\InvalidConfigException
      */
     public function testThrowingNotFoundException()
     {
+        $this->expectException(\yii\base\InvalidConfigException::class);
+
         $container = new Container();
         $container->get('non_existing');
     }

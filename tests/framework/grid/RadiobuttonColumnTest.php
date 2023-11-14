@@ -23,11 +23,12 @@ use yiiunit\TestCase;
 class RadiobuttonColumnTest extends TestCase
 {
     /**
-     * @expectedException \yii\base\InvalidConfigException
-     * @expectedExceptionMessage The "name" property must be set.
      */
     public function testException()
     {
+        $this->expectException(\yii\base\InvalidConfigException::class);
+        $this->expectExceptionMessage('The "name" property must be set.');
+
         new RadioButtonColumn([
             'name' => null,
         ]);

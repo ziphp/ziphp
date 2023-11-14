@@ -29,7 +29,7 @@ class FileValidatorTest extends TestCase
     {
         $val = new FileValidator();
         foreach (['message', 'uploadRequired', 'tooMany', 'wrongExtension', 'tooBig', 'tooSmall', 'wrongMimeType'] as $attr) {
-            $this->assertInternalType('string', $val->$attr);
+            $this->assertIsString($val->$attr);
         }
     }
 
@@ -654,7 +654,7 @@ class FileValidatorTest extends TestCase
      * @dataProvider mimeTypeCaseInsensitive
      */
     public function testValidateMimeTypeCaseInsensitive($mask, $fileMimeType, $expected) {
-        $validator = $this->getMock('\yii\validators\FileValidator', ['getMimeTypeByFile']);
+        $validator = $this->createPartialMock('\yii\validators\FileValidator', ['getMimeTypeByFile']);
         $validator->method('getMimeTypeByFile')->willReturn($fileMimeType);
         $validator->mimeTypes = [$mask];
 

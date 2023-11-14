@@ -2,7 +2,7 @@
 
 namespace yiiunit\framework\behaviors;
 
-use PHPUnit_Framework_MockObject_MockObject;
+use PHPUnit\Framework\MockObject\MockObject;
 use yii\base\Widget;
 use yii\behaviors\CacheableWidgetBehavior;
 use yiiunit\TestCase;

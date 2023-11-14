@@ -502,7 +502,7 @@ EXPECTED;
             ->setScreenWidth(200)
             ->run();
 
-        $columnWidths = \PHPUnit_Framework_Assert::readAttribute($table, "columnWidths");
+        $columnWidths = \PHPUnit\Framework\Assert::readAttribute($table, "columnWidths");
 
         $this->assertArrayHasKey(1, $columnWidths);
         $this->assertEquals(4+2, $columnWidths[1]);

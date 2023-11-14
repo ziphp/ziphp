@@ -431,10 +431,11 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @expectedException \yii\base\InvalidConfigException
      */
     public function testGetScriptFileWithEmptyServer()
     {
+        $this->expectException(\yii\base\InvalidConfigException::class);
+
         $request = new Request();
         $_SERVER = [];
 
@@ -442,10 +443,11 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @expectedException \yii\base\InvalidConfigException
      */
     public function testGetScriptUrlWithEmptyServer()
     {
+        $this->expectException(\yii\base\InvalidConfigException::class);
+
         $request = new Request();
         $_SERVER = [];
 

@@ -75,7 +75,7 @@ class AssetBundleTest extends \yiiunit\TestCase
         $bundle = TestSourceAsset::register($view);
         $bundle->publish($am);
 
-        $this->assertTrue(is_dir($bundle->basePath));
+        $this->assertDirectoryExists($bundle->basePath);
         $this->sourcesPublish_VerifyFiles('css', $bundle);
         $this->sourcesPublish_VerifyFiles('js', $bundle);
     }
@@ -88,7 +88,7 @@ class AssetBundleTest extends \yiiunit\TestCase
             $this->assertFileExists($publishedFile);
             $this->assertFileEquals($publishedFile, $sourceFile);
         }
-        $this->assertTrue(is_dir($bundle->basePath . DIRECTORY_SEPARATOR . $type));
+        $this->assertDirectoryExists($bundle->basePath . DIRECTORY_SEPARATOR . $type);
     }
 
     public function testSourcesPublishedBySymlink()
@@ -106,7 +106,7 @@ class AssetBundleTest extends \yiiunit\TestCase
             },
         ]);
         $bundle = $this->verifySourcesPublishedBySymlink($view);
-        $this->assertTrue(is_dir(dirname($bundle->basePath)));
+        $this->assertDirectoryExists(dirname($bundle->basePath));
     }
 
     public function testSourcesPublish_AssetManagerBeforeCopy()
@@ -121,7 +121,7 @@ class AssetBundleTest extends \yiiunit\TestCase
         $bundle = TestSourceAsset::register($view);
         $bundle->publish($am);
 
-        $this->assertFalse(is_dir($bundle->basePath));
+        $this->assertDirectoryNotExists($bundle->basePath);
         foreach ($bundle->js as $filename) {
             $publishedFile = $bundle->basePath . DIRECTORY_SEPARATOR . $filename;
             $this->assertFileNotExists($publishedFile);
@@ -141,7 +141,7 @@ class AssetBundleTest extends \yiiunit\TestCase
         ];
         $bundle->publish($am);
 
-        $this->assertFalse(is_dir($bundle->basePath));
+        $this->assertDirectoryNotExists($bundle->basePath);
         foreach ($bundle->js as $filename) {
             $publishedFile = $bundle->basePath . DIRECTORY_SEPARATOR . $filename;
             $this->assertFileNotExists($publishedFile);
@@ -169,8 +169,8 @@ class AssetBundleTest extends \yiiunit\TestCase
             $publishedFile = $bundle->basePath . DIRECTORY_SEPARATOR . $filename;
             $this->assertFileExists($publishedFile);
         }
-        $this->assertTrue(is_dir(dirname($bundle->basePath . DIRECTORY_SEPARATOR . $bundle->js[0])));
-        $this->assertTrue(is_dir($bundle->basePath));
+        $this->assertDirectoryExists(dirname($bundle->basePath . DIRECTORY_SEPARATOR . $bundle->js[0]));
+        $this->assertDirectoryExists($bundle->basePath);
     }
 
     public function testBasePathIsWritableOnPublish()
@@ -189,7 +189,8 @@ class AssetBundleTest extends \yiiunit\TestCase
         $view = $this->getView(['basePath' => '@testReadOnlyAssetPath']);
         $bundle = new TestSourceAsset();
 
-        $this->setExpectedException('yii\base\InvalidConfigException', 'The directory is not writable by the Web process');
+        $this->expectException('yii\base\InvalidConfigException');
+        $this->expectExceptionMessage('The directory is not writable by the Web process');
         $bundle->publish($view->getAssetManager());
 
         FileHelper::removeDirectory($path);
@@ -206,7 +207,7 @@ class AssetBundleTest extends \yiiunit\TestCase
         $bundle = TestSourceAsset::register($view);
         $bundle->publish($am);
 
-        $this->assertTrue(is_dir($bundle->basePath));
+        $this->assertDirectoryExists($bundle->basePath);
         foreach ($bundle->js as $filename) {
             $publishedFile = $bundle->basePath . DIRECTORY_SEPARATOR . $filename;
             $sourceFile = $bundle->basePath . DIRECTORY_SEPARATOR . $filename;
