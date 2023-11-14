@@ -877,9 +877,9 @@ class ArrayHelperTest extends TestCase
     public function testGetValueNonexistingProperties1(): void
     {
         if (PHP_VERSION_ID < 80000) {
-            $this->expectException('PHPUnit_Framework_Error_Notice');
+            $this->expectNotice();
         } else {
-            $this->expectException('PHPUnit_Framework_Error_Warning');
+            $this->expectWarning();
         }
         $object = new Post1();
         ArrayHelper::getValue($object, 'nonExisting');
