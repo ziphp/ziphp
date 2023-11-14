@@ -1,8 +1,10 @@
-on:
-  - pull_request
-  - push
-
 name: ci-pgsql
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
