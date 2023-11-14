@@ -81,7 +81,7 @@
         "bower-asset/yii2-pjax": "~2.0.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "8.5.34",
+        "phpunit/phpunit": "^8.5",
         "cebe/indent": "~1.0.2",
         "friendsofphp/php-cs-fixer": "^3.9.5"
     },
