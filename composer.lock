@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "80e3f228bae519816def145a5a1d47ae",
+    "content-hash": "526b57de4931d775cf7c37301b8e14ae",
     "packages": [
         {
             "name": "bower-asset/inputmask",
             "version": "5.0.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
                 "reference": "e0f39e0c93569c6b494c3a57edef2c59313a6b64"
             },
             "dist": {
@@ -29,16 +29,16 @@
         },
         {
             "name": "bower-asset/jquery",
-            "version": "3.7.1",
+            "version": "3.6.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
-                "reference": "fde1f76e2799dd877c176abde0ec836553246991"
+                "url": "git@github.com:jquery/jquery-dist.git",
+                "reference": "91ef2d8836342875f2519b5815197ea0f23613cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/fde1f76e2799dd877c176abde0ec836553246991",
-                "reference": "fde1f76e2799dd877c176abde0ec836553246991"
+                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/91ef2d8836342875f2519b5815197ea0f23613cf",
+                "reference": "91ef2d8836342875f2519b5815197ea0f23613cf"
             },
             "type": "bower-asset",
             "license": [
@@ -207,56 +207,6 @@
             "time": "2022-09-18T07:06:19+00:00"
         },
         {
-            "name": "paragonie/random_compat",
-            "version": "v9.99.100",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/996434e5492cb4c3edcb9168db6fbb1359ef965a",
-                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">= 7"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*|5.*",
-                "vimeo/psalm": "^1"
-            },
-            "suggest": {
-                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Paragon Initiative Enterprises",
-                    "email": "security@paragonie.com",
-                    "homepage": "https://paragonie.com"
-                }
-            ],
-            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
-            "keywords": [
-                "csprng",
-                "polyfill",
-                "pseudorandom",
-                "random"
-            ],
-            "support": {
-                "email": "info@paragonie.com",
-                "issues": "https://github.com/paragonie/random_compat/issues",
-                "source": "https://github.com/paragonie/random_compat"
-            },
-            "time": "2020-10-15T08:29:30+00:00"
-        },
-        {
             "name": "yiisoft/yii2-composer",
             "version": "2.0.10",
             "source": {
@@ -373,16 +323,16 @@
         },
         {
             "name": "composer/pcre",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/pcre.git",
-                "reference": "4bff79ddd77851fe3cdd11616ed3f92841ba5bd2"
+                "reference": "00104306927c7a0919b4ced2aaa6782c1e61a3c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/pcre/zipball/4bff79ddd77851fe3cdd11616ed3f92841ba5bd2",
-                "reference": "4bff79ddd77851fe3cdd11616ed3f92841ba5bd2",
+                "url": "https://api.github.com/repos/composer/pcre/zipball/00104306927c7a0919b4ced2aaa6782c1e61a3c9",
+                "reference": "00104306927c7a0919b4ced2aaa6782c1e61a3c9",
                 "shasum": ""
             },
             "require": {
@@ -424,7 +374,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/pcre/issues",
-                "source": "https://github.com/composer/pcre/tree/3.1.0"
+                "source": "https://github.com/composer/pcre/tree/3.1.1"
             },
             "funding": [
                 {
@@ -440,7 +390,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-17T09:50:14+00:00"
+            "time": "2023-10-11T07:11:09+00:00"
         },
         {
             "name": "composer/semver",
@@ -715,16 +665,16 @@
         },
         {
             "name": "doctrine/deprecations",
-            "version": "v1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/deprecations.git",
-                "reference": "612a3ee5ab0d5dd97b7cf3874a6efe24325efac3"
+                "reference": "4f2d4f2836e7ec4e7a8625e75c6aa916004db931"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/612a3ee5ab0d5dd97b7cf3874a6efe24325efac3",
-                "reference": "612a3ee5ab0d5dd97b7cf3874a6efe24325efac3",
+                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/4f2d4f2836e7ec4e7a8625e75c6aa916004db931",
+                "reference": "4f2d4f2836e7ec4e7a8625e75c6aa916004db931",
                 "shasum": ""
             },
             "require": {
@@ -756,9 +706,9 @@
             "homepage": "https://www.doctrine-project.org/",
             "support": {
                 "issues": "https://github.com/doctrine/deprecations/issues",
-                "source": "https://github.com/doctrine/deprecations/tree/v1.1.1"
+                "source": "https://github.com/doctrine/deprecations/tree/1.1.2"
             },
-            "time": "2023-06-03T09:27:29+00:00"
+            "time": "2023-09-27T20:04:15+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -2228,16 +2178,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.3.4",
+            "version": "v6.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "eca495f2ee845130855ddf1cf18460c38966c8b6"
+                "reference": "0d14a9f6d04d4ac38a8cea1171f4554e325dae92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/eca495f2ee845130855ddf1cf18460c38966c8b6",
-                "reference": "eca495f2ee845130855ddf1cf18460c38966c8b6",
+                "url": "https://api.github.com/repos/symfony/console/zipball/0d14a9f6d04d4ac38a8cea1171f4554e325dae92",
+                "reference": "0d14a9f6d04d4ac38a8cea1171f4554e325dae92",
                 "shasum": ""
             },
             "require": {
@@ -2298,7 +2248,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v6.3.4"
+                "source": "https://github.com/symfony/console/tree/v6.3.8"
             },
             "funding": [
                 {
@@ -2314,7 +2264,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-16T10:10:12+00:00"
+            "time": "2023-10-31T08:09:35+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -2604,16 +2554,16 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v6.3.3",
+            "version": "v6.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "9915db259f67d21eefee768c1abcf1cc61b1fc9e"
+                "reference": "a1b31d88c0e998168ca7792f222cbecee47428c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/9915db259f67d21eefee768c1abcf1cc61b1fc9e",
-                "reference": "9915db259f67d21eefee768c1abcf1cc61b1fc9e",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/a1b31d88c0e998168ca7792f222cbecee47428c4",
+                "reference": "a1b31d88c0e998168ca7792f222cbecee47428c4",
                 "shasum": ""
             },
             "require": {
@@ -2648,7 +2598,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v6.3.3"
+                "source": "https://github.com/symfony/finder/tree/v6.3.5"
             },
             "funding": [
                 {
@@ -2664,7 +2614,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-31T08:31:44+00:00"
+            "time": "2023-09-26T12:56:25+00:00"
         },
         {
             "name": "symfony/options-resolver",
@@ -3432,16 +3382,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v6.3.2",
+            "version": "v6.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "53d1a83225002635bca3482fcbf963001313fb68"
+                "reference": "13880a87790c76ef994c91e87efb96134522577a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/53d1a83225002635bca3482fcbf963001313fb68",
-                "reference": "53d1a83225002635bca3482fcbf963001313fb68",
+                "url": "https://api.github.com/repos/symfony/string/zipball/13880a87790c76ef994c91e87efb96134522577a",
+                "reference": "13880a87790c76ef994c91e87efb96134522577a",
                 "shasum": ""
             },
             "require": {
@@ -3498,7 +3448,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v6.3.2"
+                "source": "https://github.com/symfony/string/tree/v6.3.8"
             },
             "funding": [
                 {
@@ -3514,7 +3464,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-05T08:41:27+00:00"
+            "time": "2023-11-09T08:28:21+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -3596,7 +3546,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4.0",
+        "php": ">=7.4.0",
         "ext-mbstring": "*",
         "ext-ctype": "*",
         "lib-pcre": "*"
