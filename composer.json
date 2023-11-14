@@ -106,7 +106,8 @@
     "config": {
         "allow-plugins": {
             "yiisoft/yii2-composer": true
-        }
+        },
+        "sort-packages": true
     },
     "bin": [
         "framework/yii"
@@ -115,5 +116,11 @@
         "branch-alias": {
             "dev-master": "2.0.x-dev"
         }
+    },
+    "scripts": {
+        "redo-install": [
+            "rm -f composer.lock",
+            "@composer install -vvv"
+        ]
     }
 }
