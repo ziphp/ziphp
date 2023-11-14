@@ -2,6 +2,7 @@
 <phpunit bootstrap="./tests/bootstrap.php"
 		backupGlobals="true"
 		colors="true"
+    verbose="true"
 		convertErrorsToExceptions="true"
 		convertNoticesToExceptions="true"
 		convertWarningsToExceptions="true"
@@ -13,15 +14,15 @@
 			</testsuite>
 		</testsuites>
 		<filter>
-            <whitelist>
+            <include>
                 <directory suffix=".php">framework/</directory>
-            </whitelist>
-			<blacklist>
+            </include>
+			<exclude>
 				<file>framework/i18n/GettextFile.php</file>
 				<file>framework/web/ResponseFormatterInterface.php</file>
 				<file>framework/.phpstorm.meta.php</file>
 				<directory suffix="Exception.php">framework/base</directory>
 				<directory suffix=".php">framework/bootstrap</directory>
-			</blacklist>
+			</exclude>
 		</filter>
 </phpunit>
