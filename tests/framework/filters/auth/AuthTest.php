@@ -25,7 +25,7 @@ use yiiunit\framework\filters\stubs\UserIdentity;
  */
 class AuthTest extends \yiiunit\TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -57,7 +57,7 @@ class AuthTest extends \yiiunit\TestCase
         ];
     }
 
-    public function authOnly($token, $login, $filter)
+    public function authOnly($token, $login, $filter): void
     {
         /** @var TestAuthController $controller */
         $controller = Yii::$app->createController('test-auth')[0];
@@ -68,7 +68,7 @@ class AuthTest extends \yiiunit\TestCase
         }
     }
 
-    public function authOptional($token, $login, $filter)
+    public function authOptional($token, $login, $filter): void
     {
         /** @var TestAuthController $controller */
         $controller = Yii::$app->createController('test-auth')[0];
@@ -79,7 +79,7 @@ class AuthTest extends \yiiunit\TestCase
         }
     }
 
-    public function authExcept($token, $login, $filter)
+    public function authExcept($token, $login, $filter): void
     {
         /** @var TestAuthController $controller */
         $controller = Yii::$app->createController('test-auth')[0];
@@ -90,7 +90,7 @@ class AuthTest extends \yiiunit\TestCase
         }
     }
 
-    public function ensureFilterApplies($token, $login, $filter)
+    public function ensureFilterApplies($token, $login, $filter): void
     {
         $this->authOnly($token, $login, $filter);
         $this->authOptional($token, $login, $filter);
@@ -102,7 +102,7 @@ class AuthTest extends \yiiunit\TestCase
      * @param string|null $token
      * @param string|null $login
      */
-    public function testQueryParamAuth($token, $login)
+    public function testQueryParamAuth($token, $login): void
     {
         $_GET['access-token'] = $token;
         $filter = ['class' => QueryParamAuth::className()];
@@ -114,7 +114,7 @@ class AuthTest extends \yiiunit\TestCase
      * @param string|null $token
      * @param string|null $login
      */
-    public function testHttpHeaderAuth($token, $login)
+    public function testHttpHeaderAuth($token, $login): void
     {
         Yii::$app->request->headers->set('X-Api-Key', $token);
         $filter = ['class' => HttpHeaderAuth::className()];
@@ -126,7 +126,7 @@ class AuthTest extends \yiiunit\TestCase
      * @param string|null $token
      * @param string|null $login
      */
-    public function testHttpBearerAuth($token, $login)
+    public function testHttpBearerAuth($token, $login): void
     {
         Yii::$app->request->headers->set('Authorization', "Bearer $token");
         $filter = ['class' => HttpBearerAuth::className()];
@@ -147,7 +147,7 @@ class AuthTest extends \yiiunit\TestCase
      * @dataProvider authMethodProvider
      * @param string $authClass
      */
-    public function testActive($authClass)
+    public function testActive($authClass): void
     {
         /** @var $filter AuthMethod */
         $filter = new $authClass();
@@ -192,7 +192,7 @@ class AuthTest extends \yiiunit\TestCase
         $this->assertFalse($method->invokeArgs($filter, [new Action('view', $controller)]));
     }
 
-    public function testHeaders()
+    public function testHeaders(): void
     {
         Yii::$app->request->headers->set('Authorization', "Bearer wrong_token");
         $filter = ['class' => HttpBearerAuth::className()];

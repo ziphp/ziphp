@@ -38,7 +38,7 @@ class ChangeLogTest extends TestCase
     /**
      * @dataProvider changeProvider
      */
-    public function testContributorLine($line)
+    public function testContributorLine($line): void
     {
         if ($line === '- no changes in this release.') {
             $this->markTestSkipped('Placeholder line');

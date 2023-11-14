@@ -40,7 +40,7 @@ namespace PHPUnit\Framework {
             /**
              * @param string $exception
              */
-            public function expectException($exception)
+            public function expectException($exception): void
             {
                 $this->expectException($exception);
             }
@@ -48,7 +48,7 @@ namespace PHPUnit\Framework {
             /**
              * @param string $message
              */
-            public function expectExceptionMessage($message)
+            public function expectExceptionMessage($message): void
             {
                 $parentClassMethods = get_class_methods('PHPUnit_Framework_TestCase');
                 if (in_array('expectExceptionMessage', $parentClassMethods)) {
@@ -62,7 +62,7 @@ namespace PHPUnit\Framework {
             /**
              * @param string $messageRegExp
              */
-            public function expectExceptionMessageRegExp($messageRegExp)
+            public function expectExceptionMessageRegExp($messageRegExp): void
             {
                 $parentClassMethods = get_class_methods('PHPUnit_Framework_TestCase');
                 if (in_array('expectExceptionMessageRegExp', $parentClassMethods)) {

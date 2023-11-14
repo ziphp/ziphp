@@ -24,7 +24,7 @@ class ControllerTest extends TestCase
     /** @var FakeController */
     private $controller;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -44,7 +44,7 @@ class ControllerTest extends TestCase
         Yii::$app->controller = $this->controller;
     }
 
-    public function testBindActionParams()
+    public function testBindActionParams(): void
     {
         $aksi1 = new InlineAction('aksi1', $this->controller, 'actionAksi1');
 
@@ -59,7 +59,7 @@ class ControllerTest extends TestCase
         $this->assertEquals('available', $other);
     }
 
-    public function testNullableInjectedActionParams()
+    public function testNullableInjectedActionParams(): void
     {
         if (PHP_VERSION_ID < 70100) {
             $this->markTestSkipped('Can not be tested on PHP < 7.1');
@@ -87,7 +87,7 @@ class ControllerTest extends TestCase
         $this->assertNull($args[1]);
     }
 
-    public function testModelBindingHttpException() {
+    public function testModelBindingHttpException(): void {
         if (PHP_VERSION_ID < 70100) {
             $this->markTestSkipped('Can not be tested on PHP < 7.1');
             return;
@@ -117,7 +117,7 @@ class ControllerTest extends TestCase
         $this->controller->bindActionParams($injectionAction, []);
     }
 
-    public function testInjectionContainerException()
+    public function testInjectionContainerException(): void
     {
         if (PHP_VERSION_ID < 70100) {
             $this->markTestSkipped('Can not be tested on PHP < 7.1');
@@ -140,14 +140,14 @@ class ControllerTest extends TestCase
 
         $injectionAction = new InlineAction('injection', $this->controller, 'actionInjection');
         $params = ['between' => 'test', 'after' => 'another', 'before' => 'test'];
-        Yii::$container->set(VendorImage::className(), function() { throw new \RuntimeException('uh oh'); });
+        Yii::$container->set(VendorImage::className(), function(): void { throw new \RuntimeException('uh oh'); });
 
         $this->expectException(get_class(new RuntimeException()));
         $this->expectExceptionMessage('uh oh');
         $this->controller->bindActionParams($injectionAction, $params);
     }
 
-    public function testUnknownInjection()
+    public function testUnknownInjection(): void
     {
         if (PHP_VERSION_ID < 70100) {
             $this->markTestSkipped('Can not be tested on PHP < 7.1');
@@ -175,7 +175,7 @@ class ControllerTest extends TestCase
         $this->controller->bindActionParams($injectionAction, $params);
     }
 
-    public function testInjectedActionParams()
+    public function testInjectedActionParams(): void
     {
         if (PHP_VERSION_ID < 70100) {
             $this->markTestSkipped('Can not be tested on PHP < 7.1');
@@ -209,7 +209,7 @@ class ControllerTest extends TestCase
         $this->assertEquals($params['after'], $args[5]);
     }
 
-    public function testInjectedActionParamsFromModule()
+    public function testInjectedActionParamsFromModule(): void
     {
         if (PHP_VERSION_ID < 70100) {
             $this->markTestSkipped('Can not be tested on PHP < 7.1');
@@ -242,7 +242,7 @@ class ControllerTest extends TestCase
     /**
      * @see https://github.com/yiisoft/yii2/issues/17701
      */
-    public function testBindTypedActionParams()
+    public function testBindTypedActionParams(): void
     {
         if (PHP_VERSION_ID < 70000) {
             $this->markTestSkipped('Can not be tested on PHP < 7.0');
@@ -289,7 +289,7 @@ class ControllerTest extends TestCase
         $this->controller->bindActionParams($aksi1, $params);
     }
 
-    public function testAsJson()
+    public function testAsJson(): void
     {
         $data = [
             'test' => 123,
@@ -302,7 +302,7 @@ class ControllerTest extends TestCase
         $this->assertEquals($data, $result->data);
     }
 
-    public function testAsXml()
+    public function testAsXml(): void
     {
         $data = [
             'test' => 123,
@@ -315,7 +315,7 @@ class ControllerTest extends TestCase
         $this->assertEquals($data, $result->data);
     }
 
-    public function testRedirect()
+    public function testRedirect(): void
     {
         $_SERVER['REQUEST_URI'] = 'http://test-domain.com/';
         $this->assertEquals($this->controller->redirect('')->headers->get('location'), '/');
@@ -332,7 +332,7 @@ class ControllerTest extends TestCase
         $this->assertEquals($this->controller->redirect(['//controller/index', 'slug' => 'äöüß!"§$%&/()'])->headers->get('location'), '/index.php?r=controller%2Findex&slug=%C3%A4%C3%B6%C3%BC%C3%9F%21%22%C2%A7%24%25%26%2F%28%29');
     }
 
-    public function testUnionBindingActionParams()
+    public function testUnionBindingActionParams(): void
     {
         if (PHP_VERSION_ID < 80000) {
             $this->markTestSkipped('Can not be tested on PHP < 8.0');

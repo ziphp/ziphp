@@ -24,7 +24,7 @@ class RadiobuttonColumnTest extends TestCase
 {
     /**
      */
-    public function testException()
+    public function testException(): void
     {
         $this->expectException(\yii\base\InvalidConfigException::class);
         $this->expectExceptionMessage('The "name" property must be set.');
@@ -34,7 +34,7 @@ class RadiobuttonColumnTest extends TestCase
         ]);
     }
 
-    public function testOptionsByArray()
+    public function testOptionsByArray(): void
     {
         $column = new RadioButtonColumn([
             'radioOptions' => [
@@ -44,7 +44,7 @@ class RadiobuttonColumnTest extends TestCase
         $this->assertEquals('<td><input type="radio" name="radioButtonSelection" value="42"></td>', $column->renderDataCell([], 1, 0));
     }
 
-    public function testOptionsByCallback()
+    public function testOptionsByCallback(): void
     {
         $model = [
             'label' => 'label',
@@ -61,7 +61,7 @@ class RadiobuttonColumnTest extends TestCase
         $this->assertEquals('<td><input type="radio" name="radioButtonSelection" value="' . $model['value'] . '"></td>', $actual);
     }
 
-    public function testContent()
+    public function testContent(): void
     {
         $column = new RadioButtonColumn([
             'content' => function ($model, $key, $index, $column) {
@@ -78,7 +78,7 @@ class RadiobuttonColumnTest extends TestCase
         $this->assertContains(Html::radio('radioButtonInput', false), $column->renderDataCell([], 1, 0));
     }
 
-    public function testMultipleInGrid()
+    public function testMultipleInGrid(): void
     {
         $this->mockApplication();
         Yii::setAlias('@webroot', '@yiiunit/runtime');

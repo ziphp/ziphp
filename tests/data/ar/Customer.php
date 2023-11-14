@@ -81,7 +81,7 @@ class Customer extends ActiveRecord
         /* @var $rel ActiveQuery */
         $rel = $this->hasMany(Item::className(), ['id' => 'item_id']);
 
-        return $rel->viaTable('order_item', ['order_id' => 'id'], function ($q) {
+        return $rel->viaTable('order_item', ['order_id' => 'id'], function ($q): void {
             /* @var $q ActiveQuery */
             $q->viaTable('order', ['customer_id' => 'id']);
         })->orderBy('id');
@@ -99,7 +99,7 @@ class Customer extends ActiveRecord
             ->via('orderItems2');
     }
 
-    public function afterSave($insert, $changedAttributes)
+    public function afterSave($insert, $changedAttributes): void
     {
         ActiveRecordTest::$afterSaveInsert = $insert;
         ActiveRecordTest::$afterSaveNewRecord = $this->isNewRecord;

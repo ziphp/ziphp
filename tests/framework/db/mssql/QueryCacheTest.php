@@ -19,7 +19,7 @@ class QueryCacheTest extends DatabaseTestCase
 {
     protected $driverName = 'sqlsrv';
 
-    public function testQueryCacheFileCache()
+    public function testQueryCacheFileCache(): void
     {
         $db = $this->getConnection();
         $db->enableQueryCache = true;

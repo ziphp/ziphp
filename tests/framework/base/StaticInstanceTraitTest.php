@@ -13,7 +13,7 @@ use yiiunit\TestCase;
 
 class StaticInstanceTraitTest extends TestCase
 {
-    public function testInstance()
+    public function testInstance(): void
     {
         $speakerModel = Speaker::instance();
         $this->assertInstanceOf(Speaker::class, $speakerModel);

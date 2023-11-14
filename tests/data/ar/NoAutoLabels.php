@@ -20,7 +20,7 @@ class NoAutoLabels extends ActiveRecord
         ];
     }
 
-    public function generateAttributeLabel($name)
+    public function generateAttributeLabel($name): void
     {
         throw new \yii\base\InvalidArgumentException('Label not defined!');
     }

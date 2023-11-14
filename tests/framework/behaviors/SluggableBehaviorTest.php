@@ -26,14 +26,14 @@ class SluggableBehaviorTest extends TestCase
      */
     protected $dbConnection;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         if (!extension_loaded('pdo') || !extension_loaded('pdo_sqlite')) {
             static::markTestSkipped('PDO and SQLite extensions are required.');
         }
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->mockApplication([
             'components' => [
@@ -60,7 +60,7 @@ class SluggableBehaviorTest extends TestCase
         Yii::$app->getDb()->createCommand()->createTable('test_slug_related', $columns)->execute();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         Yii::$app->getDb()->close();
         parent::tearDown();
@@ -70,7 +70,7 @@ class SluggableBehaviorTest extends TestCase
 
     // Tests :
 
-    public function testSlug()
+    public function testSlug(): void
     {
         $model = new ActiveRecordSluggable();
         $model->name = 'test name';
@@ -82,7 +82,7 @@ class SluggableBehaviorTest extends TestCase
     /**
      * @depends testSlug
      */
-    public function testSlugSeveralAttributes()
+    public function testSlugSeveralAttributes(): void
     {
         $model = new ActiveRecordSluggable();
         $model->getBehavior('sluggable')->attribute = ['name', 'category_id'];
@@ -97,7 +97,7 @@ class SluggableBehaviorTest extends TestCase
     /**
      * @depends testSlug
      */
-    public function testSlugRelatedAttribute()
+    public function testSlugRelatedAttribute(): void
     {
         $model = new ActiveRecordSluggable();
         $model->getBehavior('sluggable')->attribute = 'related.name';
@@ -116,7 +116,7 @@ class SluggableBehaviorTest extends TestCase
     /**
      * @depends testSlug
      */
-    public function testUniqueByIncrement()
+    public function testUniqueByIncrement(): void
     {
         $name = 'test name';
 
@@ -135,7 +135,7 @@ class SluggableBehaviorTest extends TestCase
     /**
      * @depends testUniqueByIncrement
      */
-    public function testUniqueByCallback()
+    public function testUniqueByCallback(): void
     {
         $name = 'test name';
 
@@ -154,7 +154,7 @@ class SluggableBehaviorTest extends TestCase
     /**
      * @depends testSlug
      */
-    public function testUpdateUnique()
+    public function testUpdateUnique(): void
     {
         $name = 'test name';
 
@@ -174,7 +174,7 @@ class SluggableBehaviorTest extends TestCase
         $this->assertEquals('test-name', $model->slug);
     }
 
-    public function testSkipOnEmpty()
+    public function testSkipOnEmpty(): void
     {
         $model = new SkipOnEmptySluggableActiveRecord();
         $model->name = 'test name';
@@ -193,7 +193,7 @@ class SluggableBehaviorTest extends TestCase
     /**
      * @depends testSlug
      */
-    public function testImmutableByAttribute()
+    public function testImmutableByAttribute(): void
     {
         $model = new ActiveRecordSluggable();
         $model->getSluggable()->immutable = true;
@@ -210,7 +210,7 @@ class SluggableBehaviorTest extends TestCase
     /**
      * @depends testSlug
      */
-    public function testImmutableByCallback()
+    public function testImmutableByCallback(): void
     {
         $model = new ActiveRecordSluggable();
         $model->getSluggable()->immutable = true;

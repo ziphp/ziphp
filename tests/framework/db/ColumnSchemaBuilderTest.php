@@ -54,7 +54,7 @@ abstract class ColumnSchemaBuilderTest extends DatabaseTestCase
      * @param int|null $length
      * @param mixed $calls
      */
-    public function testCustomTypes($expected, $type, $length, $calls)
+    public function testCustomTypes($expected, $type, $length, $calls): void
     {
         $this->checkBuildString($expected, $type, $length, $calls);
     }
@@ -65,7 +65,7 @@ abstract class ColumnSchemaBuilderTest extends DatabaseTestCase
      * @param int|null $length
      * @param array $calls
      */
-    public function checkBuildString($expected, $type, $length, $calls)
+    public function checkBuildString($expected, $type, $length, $calls): void
     {
         $builder = $this->getColumnSchemaBuilder($type, $length);
         foreach ($calls as $call) {

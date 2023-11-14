@@ -20,7 +20,7 @@ use yiiunit\data\ar\NoAutoLabels;
  */
 class GridViewTest extends \yiiunit\TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->mockApplication([
@@ -54,7 +54,7 @@ class GridViewTest extends \yiiunit\TestCase
      * @param string $expectedText
      * @throws \Exception
      */
-    public function testEmpty($emptyText, $expectedText)
+    public function testEmpty($emptyText, $expectedText): void
     {
         $html = GridView::widget([
             'id' => 'grid',
@@ -78,7 +78,7 @@ class GridViewTest extends \yiiunit\TestCase
         $this->assertEquals($expectedHtml, $html);
     }
 
-    public function testGuessColumns()
+    public function testGuessColumns(): void
     {
         $row = ['id' => 1, 'name' => 'Name1', 'value' => 'Value1', 'description' => 'Description1'];
 
@@ -127,7 +127,7 @@ class GridViewTest extends \yiiunit\TestCase
 	/**
 	 * @throws \Exception
 	 */
-	public function testFooter() {
+	public function testFooter(): void {
 		$config = [
 			'id'           => 'grid',
 			'dataProvider' => new ArrayDataProvider(['allModels' => []]),
@@ -153,7 +153,7 @@ class GridViewTest extends \yiiunit\TestCase
 		$this->assertTrue(preg_match("/<\/tbody><tfoot>/", $html) === 1);
 	}
 
-    public function testHeaderLabels()
+    public function testHeaderLabels(): void
     {
         // Ensure GridView does not call Model::generateAttributeLabel() to generate labels unless the labels are explicitly used.
 

@@ -14,7 +14,7 @@ use yiiunit\TestCase;
 
 class ErrorHandlerTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->mockWebApplication([
@@ -29,7 +29,7 @@ class ErrorHandlerTest extends TestCase
         ]);
     }
 
-    public function testCorrectResponseCodeInErrorView()
+    public function testCorrectResponseCodeInErrorView(): void
     {
         /** @var ErrorHandler $handler */
         $handler = Yii::$app->getErrorHandler();
@@ -42,7 +42,7 @@ Message: This message is displayed to end user
 Exception: yii\web\NotFoundHttpException', $out);
     }
 
-    public function testFormatRaw()
+    public function testFormatRaw(): void
     {
         Yii::$app->response->format = yii\web\Response::FORMAT_RAW;
 
@@ -59,7 +59,7 @@ Exception: yii\web\NotFoundHttpException', $out);
         $this->assertcontains("Exception 'Exception' with message 'Test Exception'", Yii::$app->response->data);
     }
 
-    public function testFormatXml()
+    public function testFormatXml(): void
     {
         Yii::$app->response->format = yii\web\Response::FORMAT_XML;
 
@@ -85,7 +85,7 @@ Exception: yii\web\NotFoundHttpException', $out);
         $this->assertArrayHasKey('line', $outArray);
     }
 
-    public function testClearAssetFilesInErrorView()
+    public function testClearAssetFilesInErrorView(): void
     {
         Yii::$app->getView()->registerJsFile('somefile.js');
         /** @var ErrorHandler $handler */
@@ -98,7 +98,7 @@ Exception: yii\web\NotFoundHttpException', $out);
 ', $out);
     }
 
-    public function testClearAssetFilesInErrorActionView()
+    public function testClearAssetFilesInErrorActionView(): void
     {
         Yii::$app->getErrorHandler()->errorAction = 'test/error';
         Yii::$app->getView()->registerJs("alert('hide me')", View::POS_END);
@@ -112,7 +112,7 @@ Exception: yii\web\NotFoundHttpException', $out);
         $this->assertNotContains('<script', $out);
     }
 
-    public function testRenderCallStackItem()
+    public function testRenderCallStackItem(): void
     {
         $handler = Yii::$app->getErrorHandler();
         $handler->traceLine = '<a href="netbeans://open?file={file}&line={line}">{html}</a>';
@@ -156,14 +156,14 @@ Exception: yii\web\NotFoundHttpException', $out);
     /**
      * @dataProvider dataHtmlEncode
      */
-    public function testHtmlEncode($text, $expected)
+    public function testHtmlEncode($text, $expected): void
     {
         $handler = Yii::$app->getErrorHandler();
 
         $this->assertSame($expected, $handler->htmlEncode($text));
     }
 
-    public function testHtmlEncodeWithUnicodeSequence()
+    public function testHtmlEncodeWithUnicodeSequence(): void
     {
         if (PHP_VERSION_ID < 70000) {
             $this->markTestSkipped('Can not be tested on PHP < 7.0');

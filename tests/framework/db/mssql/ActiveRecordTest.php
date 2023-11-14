@@ -20,7 +20,7 @@ class ActiveRecordTest extends \yiiunit\framework\db\ActiveRecordTest
 {
     public $driverName = 'sqlsrv';
 
-    public function testExplicitPkOnAutoIncrement()
+    public function testExplicitPkOnAutoIncrement(): void
     {
         $this->markTestSkipped('MSSQL does not support explicit value for an IDENTITY column.');
     }
@@ -28,7 +28,7 @@ class ActiveRecordTest extends \yiiunit\framework\db\ActiveRecordTest
     /**
      * @throws Exception
      */
-    public function testSaveWithTrigger()
+    public function testSaveWithTrigger(): void
     {
         $db = $this->getConnection();
 
@@ -62,7 +62,7 @@ END';
     /**
      * @throws Exception
      */
-    public function testSaveWithComputedColumn()
+    public function testSaveWithComputedColumn(): void
     {
         $db = $this->getConnection();
 
@@ -89,7 +89,7 @@ END';
     /**
      * @throws Exception
      */
-    public function testSaveWithRowVersionColumn()
+    public function testSaveWithRowVersionColumn(): void
     {
         $db = $this->getConnection();
 
@@ -106,7 +106,7 @@ END';
     /**
      * @throws Exception
      */
-    public function testSaveWithRowVersionNullColumn()
+    public function testSaveWithRowVersionNullColumn(): void
     {
         $db = $this->getConnection();
 

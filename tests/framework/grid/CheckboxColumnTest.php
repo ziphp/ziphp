@@ -21,7 +21,7 @@ use yiiunit\TestCase;
  */
 class CheckboxColumnTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         IntlTestHelper::resetIntlStatus();
@@ -32,7 +32,7 @@ class CheckboxColumnTest extends TestCase
         Yii::$app->assetManager->bundles['yii\web\JqueryAsset'] = false;
     }
 
-    public function testInputName()
+    public function testInputName(): void
     {
         $column = new CheckboxColumn(['name' => 'selection', 'grid' => $this->getGrid()]);
         $this->assertContains('name="selection_all"', $column->renderHeaderCell());
@@ -53,7 +53,7 @@ class CheckboxColumnTest extends TestCase
         $this->assertContains('name="MyForm[grid1][key_all]"', $column->renderHeaderCell());
     }
 
-    public function testInputValue()
+    public function testInputValue(): void
     {
         $column = new CheckboxColumn(['grid' => $this->getGrid()]);
         $this->assertContains('value="1"', $column->renderDataCell([], 1, 0));
@@ -84,7 +84,7 @@ class CheckboxColumnTest extends TestCase
         $this->assertContains('value="42"', $column->renderDataCell([], 1, 0));
     }
 
-    public function testContent()
+    public function testContent(): void
     {
         $column = new CheckboxColumn([
             'content' => function ($model, $key, $index, $column) {

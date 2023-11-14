@@ -39,7 +39,7 @@ class MemCacheTest extends CacheTestCase
         return $this->_cacheInstance;
     }
 
-    public function testExpire()
+    public function testExpire(): void
     {
         if (getenv('GITHUB_ACTIONS') == 'true') {
             $this->markTestSkipped('Can not reliably test memcache expiry on GitHub actions.');
@@ -47,7 +47,7 @@ class MemCacheTest extends CacheTestCase
         parent::testExpire();
     }
 
-    public function testExpireAdd()
+    public function testExpireAdd(): void
     {
         if (getenv('GITHUB_ACTIONS') == 'true') {
             $this->markTestSkipped('Can not reliably test memcache expiry on GitHub actions.');

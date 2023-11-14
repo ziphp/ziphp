@@ -163,7 +163,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
         return $columns;
     }
 
-    public function testCompositeFk()
+    public function testCompositeFk(): void
     {
         $schema = $this->getConnection()->schema;
 
@@ -176,7 +176,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
         $this->assertEquals('item_id', $table->foreignKeys['fk_composite_fk_order_item']['item_id']);
     }
 
-    public function testGetPDOType()
+    public function testGetPDOType(): void
     {
         $values = [
             [null, \PDO::PARAM_NULL],
@@ -198,7 +198,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
         fclose($fp);
     }
 
-    public function testBooleanDefaultValues()
+    public function testBooleanDefaultValues(): void
     {
         $schema = $this->getConnection()->schema;
 
@@ -207,7 +207,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
         $this->assertFalse($table->getColumn('default_false')->defaultValue);
     }
 
-    public function testSequenceName()
+    public function testSequenceName(): void
     {
         $connection = $this->getConnection();
 
@@ -223,7 +223,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
         $this->assertEquals($sequenceName, $connection->schema->getTableSchema('item')->sequenceName);
     }
 
-    public function testGeneratedValues()
+    public function testGeneratedValues(): void
     {
         if (version_compare($this->getConnection(false)->getServerVersion(), '12.0', '<')) {
             $this->markTestSkipped('PostgreSQL < 12.0 does not support GENERATED AS IDENTITY columns.');
@@ -240,7 +240,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
         $this->assertTrue($table->getColumn('id_default')->autoIncrement);
     }
 
-    public function testPartitionedTable()
+    public function testPartitionedTable(): void
     {
         if (version_compare($this->getConnection(false)->getServerVersion(), '10.0', '<')) {
             $this->markTestSkipped('PostgreSQL < 10.0 does not support PARTITION BY clause.');
@@ -253,7 +253,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
         $this->assertNotNull($this->getConnection(false)->schema->getTableSchema('partitioned'));
     }
 
-    public function testFindSchemaNames()
+    public function testFindSchemaNames(): void
     {
         $schema = $this->getConnection()->schema;
 
@@ -277,7 +277,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
      * @dataProvider bigintValueProvider
      * @param int $bigint
      */
-    public function testBigintValue($bigint)
+    public function testBigintValue($bigint): void
     {
         $this->mockApplication();
         ActiveRecord::$db = $this->getConnection();
@@ -299,7 +299,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
     /**
      * @see https://github.com/yiisoft/yii2/issues/12483
      */
-    public function testParenthesisDefaultValue()
+    public function testParenthesisDefaultValue(): void
     {
         $db = $this->getConnection(false);
         if ($db->schema->getTableSchema('test_default_parenthesis') !== null) {
@@ -324,7 +324,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
     /**
      * @see https://github.com/yiisoft/yii2/issues/14192
      */
-    public function testTimestampNullDefaultValue()
+    public function testTimestampNullDefaultValue(): void
     {
         $db = $this->getConnection(false);
         if ($db->schema->getTableSchema('test_timestamp_default_null') !== null) {
@@ -351,7 +351,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
         return $result;
     }
 
-    public function testCustomTypeInNonDefaultSchema()
+    public function testCustomTypeInNonDefaultSchema(): void
     {
         $connection = $this->getConnection();
         ActiveRecord::$db = $this->getConnection();

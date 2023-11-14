@@ -11,7 +11,7 @@ class TestController extends Controller
 
     private $actionConfig = [];
 
-    public function setActionConfig($config = [])
+    public function setActionConfig($config = []): void
     {
         $this->actionConfig = $config;
     }

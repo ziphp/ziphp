@@ -15,7 +15,7 @@ use yiiunit\TestCase;
  */
 class DefaultValueValidatorTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -23,7 +23,7 @@ class DefaultValueValidatorTest extends TestCase
         $this->destroyApplication();
     }
 
-    public function testValidateAttribute()
+    public function testValidateAttribute(): void
     {
         $val = new DefaultValueValidator();
         $val->value = 'test_value';

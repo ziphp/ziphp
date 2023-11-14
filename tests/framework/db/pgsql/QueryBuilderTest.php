@@ -154,7 +154,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         ]);
     }
 
-    public function testAlterColumn()
+    public function testAlterColumn(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -210,12 +210,12 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         return $result;
     }
 
-    public function defaultValuesProvider()
+    public function defaultValuesProvider(): void
     {
         $this->markTestSkipped('Adding/dropping default constraints is not supported in PostgreSQL.');
     }
 
-    public function testCommentColumn()
+    public function testCommentColumn(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -228,7 +228,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         $this->assertEquals($this->replaceQuotes($expected), $sql);
     }
 
-    public function testCommentTable()
+    public function testCommentTable(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -252,7 +252,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         return $data;
     }
 
-    public function testResetSequence()
+    public function testResetSequence(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -265,7 +265,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         $this->assertEquals($expected, $sql);
     }
 
-    public function testResetSequencePostgres12()
+    public function testResetSequencePostgres12(): void
     {
         if (version_compare($this->getConnection(false)->getServerVersion(), '12.0', '<')) {
             $this->markTestSkipped('PostgreSQL < 12.0 does not support GENERATED AS IDENTITY columns.');
@@ -408,7 +408,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         return $items;
     }
 
-    public function testDropIndex()
+    public function testDropIndex(): void
     {
         $qb = $this->getQueryBuilder();
 

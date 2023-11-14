@@ -32,17 +32,17 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         return array_merge(parent::columnTypes(), []);
     }
 
-    public function checksProvider()
+    public function checksProvider(): void
     {
         $this->markTestSkipped('Adding/dropping check constraints is not supported in CUBRID.');
     }
 
-    public function defaultValuesProvider()
+    public function defaultValuesProvider(): void
     {
         $this->markTestSkipped('Adding/dropping default constraints is not supported in CUBRID.');
     }
 
-    public function testResetSequence()
+    public function testResetSequence(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -55,7 +55,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         $this->assertEquals($expected, $sql);
     }
 
-    public function testCommentColumn()
+    public function testCommentColumn(): void
     {
         $version = $this->getQueryBuilder(false)->db->getSlavePdo(true)->getAttribute(\PDO::ATTR_SERVER_VERSION);
         if (version_compare($version, '10.0', '<')) {

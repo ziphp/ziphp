@@ -12,7 +12,7 @@ class ArrayParserTest extends TestCase
      */
     protected $arrayParser;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -39,7 +39,7 @@ class ArrayParserTest extends TestCase
     /**
      * @dataProvider convertProvider
      */
-    public function testConvert($string, $expected)
+    public function testConvert($string, $expected): void
     {
         $this->assertSame($expected, $this->arrayParser->parse($string));
     }

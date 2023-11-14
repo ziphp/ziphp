@@ -19,7 +19,7 @@ class POMessageControllerTest extends BaseMessageControllerTest
     protected $messagePath;
     protected $catalog = 'messages';
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -27,7 +27,7 @@ class POMessageControllerTest extends BaseMessageControllerTest
         FileHelper::createDirectory($this->messagePath, 0777);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
         FileHelper::removeDirectory($this->messagePath);
@@ -58,7 +58,7 @@ class POMessageControllerTest extends BaseMessageControllerTest
     /**
      * {@inheritdoc}
      */
-    protected function saveMessages($messages, $category)
+    protected function saveMessages($messages, $category): void
     {
         $messageFilePath = $this->getMessageFilePath();
         FileHelper::createDirectory(dirname($messageFilePath), 0777);

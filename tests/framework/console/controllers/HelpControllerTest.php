@@ -21,7 +21,7 @@ class HelpControllerTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->mockApplication();
     }
@@ -53,7 +53,7 @@ class HelpControllerTest extends TestCase
         return $controller->flushStdOutBuffer();
     }
 
-    public function testModuleControllersList()
+    public function testModuleControllersList(): void
     {
         $this->mockApplication([
             'enableCoreCommands' => false,
@@ -76,7 +76,7 @@ STRING
             , $result);
     }
 
-    public function testActionList()
+    public function testActionList(): void
     {
         $this->mockApplication([
             'enableCoreCommands' => false,
@@ -112,7 +112,7 @@ STRING
         , $result);
     }
 
-    public function testActionListActionOptions()
+    public function testActionListActionOptions(): void
     {
         $this->mockApplication([
             'enableCoreCommands' => false,
@@ -134,7 +134,7 @@ STRING
         , $result);
     }
 
-    public function testActionUsage()
+    public function testActionUsage(): void
     {
         $this->mockApplication([
             'enableCoreCommands' => false,
@@ -151,7 +151,7 @@ STRING
             , $result);
     }
 
-    public function testActionIndex()
+    public function testActionIndex(): void
     {
         $result = Console::stripAnsiFormat($this->runControllerAction('index'));
         $this->assertContains('This is Yii version ', $result);
@@ -160,7 +160,7 @@ STRING
         $this->assertContains('bootstrap.php help', $result);
     }
 
-    public function testActionIndexWithHelpCommand()
+    public function testActionIndexWithHelpCommand(): void
     {
         $result = Console::stripAnsiFormat($this->runControllerAction('index', ['command' => 'help/index']));
         $this->assertContains('Displays available commands or the detailed information', $result);
@@ -172,7 +172,7 @@ STRING
         $this->assertContains('--interactive: boolean, 0 or 1 (defaults to 1)', $result);
     }
 
-    public function testActionIndexWithServeCommand()
+    public function testActionIndexWithServeCommand(): void
     {
         $result = Console::stripAnsiFormat($this->runControllerAction('index', ['command' => 'serve']));
         $this->assertContains('Runs PHP built-in web server', $result);
@@ -187,7 +187,7 @@ STRING
         $this->assertContains('--router, -r: string', $result);
     }
 
-    public function testActionListContainsNoEmptyCommands()
+    public function testActionListContainsNoEmptyCommands(): void
     {
         $this->mockApplication([
             'enableCoreCommands' => false,
@@ -199,7 +199,7 @@ STRING
         $this->assertContains("fake-no-default/index\n", $result);
     }
 
-    public function testActionIndexContainsNoEmptyCommands()
+    public function testActionIndexContainsNoEmptyCommands(): void
     {
         $this->mockApplication([
             'enableCoreCommands' => false,

@@ -19,13 +19,13 @@ use yiiunit\TestCase;
  */
 class ActionFilterTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->mockApplication();
     }
 
-    public function testFilter()
+    public function testFilter(): void
     {
         // no filters
         $controller = new FakeController('fake', Yii::$app);
@@ -103,7 +103,7 @@ class ActionFilterTest extends TestCase
      * @dataProvider actionFilterProvider
      * @param string|array $filterClass
      */
-    public function testActive($filterClass)
+    public function testActive($filterClass): void
     {
         $this->mockWebApplication();
 
@@ -138,7 +138,7 @@ class ActionFilterTest extends TestCase
     /**
      * @depends testActive
      */
-    public function testActiveWildcard()
+    public function testActiveWildcard(): void
     {
         $this->mockWebApplication();
 
@@ -239,7 +239,7 @@ class Filter3 extends ActionFilter
 
 class MockUser extends User
 {
-    public function init()
+    public function init(): void
     {
         // do not call parent to avoid the need to mock configuration
     }

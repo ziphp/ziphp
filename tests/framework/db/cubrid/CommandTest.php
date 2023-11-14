@@ -15,7 +15,7 @@ class CommandTest extends \yiiunit\framework\db\CommandTest
 {
     public $driverName = 'cubrid';
 
-    public function testBindParamValue()
+    public function testBindParamValue(): void
     {
         $db = $this->getConnection();
 
@@ -75,7 +75,7 @@ class CommandTest extends \yiiunit\framework\db\CommandTest
         $this->assertEquals('user5@example.com', $command->queryScalar());
     }
 
-    public function testAutoQuoting()
+    public function testAutoQuoting(): void
     {
         $db = $this->getConnection(false);
 
@@ -93,7 +93,7 @@ class CommandTest extends \yiiunit\framework\db\CommandTest
         return $data;
     }
 
-    public function testAddDropCheck()
+    public function testAddDropCheck(): void
     {
         $this->markTestSkipped('CUBRID does not support adding/dropping check constraints.');
     }

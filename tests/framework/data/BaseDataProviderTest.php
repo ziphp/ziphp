@@ -15,7 +15,7 @@ use yiiunit\TestCase;
  */
 class BaseDataProviderTest extends TestCase
 {
-    public function testGenerateId()
+    public function testGenerateId(): void
     {
         $rc = new \ReflectionClass(BaseDataProvider::className());
         $rp = $rc->getProperty('counter');

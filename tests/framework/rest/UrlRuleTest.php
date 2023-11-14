@@ -20,13 +20,13 @@ use yiiunit\TestCase;
  */
 class UrlRuleTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->mockApplication();
     }
 
-    public function testInitControllerNamePluralization()
+    public function testInitControllerNamePluralization(): void
     {
         $suites = $this->getTestsForControllerNamePluralization();
         foreach ($suites as $i => $suite) {
@@ -39,7 +39,7 @@ class UrlRuleTest extends TestCase
         }
     }
 
-    public function testParseRequest()
+    public function testParseRequest(): void
     {
         $manager = new UrlManager(['cache' => null]);
         $request = new Request(['hostInfo' => 'http://en.example.com', 'methodParam' => '_METHOD']);
@@ -358,7 +358,7 @@ class UrlRuleTest extends TestCase
      * @param array $ruleConfig
      * @param array $tests
      */
-    public function testCreateUrl($ruleConfig, $tests)
+    public function testCreateUrl($ruleConfig, $tests): void
     {
         foreach ($tests as $test) {
             list($params, $expected) = $test;
@@ -380,7 +380,7 @@ class UrlRuleTest extends TestCase
      * @param array $ruleConfig
      * @param array $tests
      */
-    public function testGetCreateUrlStatus($ruleConfig, $tests)
+    public function testGetCreateUrlStatus($ruleConfig, $tests): void
     {
         foreach ($tests as $test) {
             list($params, $expected, $status) = $test;
