@@ -27,7 +27,7 @@
         "ext-mbstring": "*",
         "ext-ctype": "*",
         "lib-pcre": "*",
-        "yiisoft/yii2-composer": "~2.0.4",
+        "ziphp/zipper": "dev-main",
         "ezyang/htmlpurifier": "^4.16",
         "cebe/markdown": "~1.0.0 | ~1.1.0 | ~1.2.0",
         "bower-asset/jquery": "3.7.*@stable | 3.6.*@stable | 3.5.*@stable | 3.4.*@stable | 3.3.*@stable | 3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
