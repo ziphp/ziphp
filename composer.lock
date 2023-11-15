@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87d427b0257830166fc433a470aa6288",
+    "content-hash": "b6fd9739e24e957b5e688a286c18a8ac",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -208,16 +208,16 @@
         },
         {
             "name": "ziphp/zipper",
-            "version": "dev-main",
+            "version": "v5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ziphp/zipper.git",
-                "reference": "8fb0a2295ff326fbac2d12fd2d1bf7c76ae2dcd7"
+                "reference": "ef9f75bbfb576ddf968ae254c370b9a60f1f79f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ziphp/zipper/zipball/8fb0a2295ff326fbac2d12fd2d1bf7c76ae2dcd7",
-                "reference": "8fb0a2295ff326fbac2d12fd2d1bf7c76ae2dcd7",
+                "url": "https://api.github.com/repos/ziphp/zipper/zipball/ef9f75bbfb576ddf968ae254c370b9a60f1f79f1",
+                "reference": "ef9f75bbfb576ddf968ae254c370b9a60f1f79f1",
                 "shasum": ""
             },
             "require": {
@@ -227,7 +227,6 @@
                 "composer/composer": "^1.0 | ^2.0@dev",
                 "phpunit/phpunit": "^8.0"
             },
-            "default-branch": true,
             "type": "composer-plugin",
             "extra": {
                 "class": "yii\\composer\\Plugin",
@@ -264,7 +263,7 @@
                 "issues": "https://github.com/ziphp/zipper/issues",
                 "source": "https://github.com/ziphp/zipper"
             },
-            "time": "2023-11-15T05:54:12+00:00"
+            "time": "2023-11-15T07:24:29+00:00"
         }
     ],
     "packages-dev": [
@@ -3776,7 +3775,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "ziphp/zipper": 20,
         "bower-asset/jquery": 0
     },
     "prefer-stable": true,
