@@ -1,0 +1,91 @@
+diff --git a/framework/caching/Cache.php b/framework/caching/Cache.php
+index 5e1828ef850..d6d363c6d34 100644
+--- a/framework/caching/Cache.php
++++ b/framework/caching/Cache.php
+@@ -294,21 +294,7 @@ public function multiSet($items, $duration = null, $dependency = null)
+             $duration = $this->defaultDuration;
+         }
+ 
+-        if ($dependency !== null && $this->serializer !== false) {
+-            $dependency->evaluateDependency($this);
+-        }
+-
+-        $data = [];
+-        foreach ($items as $key => $value) {
+-            if ($this->serializer === null) {
+-                $value = serialize([$value, $dependency]);
+-            } elseif ($this->serializer !== false) {
+-                $value = call_user_func($this->serializer[0], [$value, $dependency]);
+-            }
+-
+-            $key = $this->buildKey($key);
+-            $data[$key] = $value;
+-        }
++        $data = $this->prepareCacheData($items, $dependency);
+ 
+         return $this->setValues($data, $duration);
+     }
+@@ -343,6 +329,21 @@ public function madd($items, $duration = 0, $dependency = null)
+      * @since 2.0.7
+      */
+     public function multiAdd($items, $duration = 0, $dependency = null)
++    {
++        $data = $this->prepareCacheData($items, $dependency);
++
++        return $this->addValues($data, $duration);
++    }
++
++    /**
++     * Prepares data for caching by serializing values and evaluating dependencies.
++     *
++     * @param array $items The items to be cached.
++     * @param mixed $dependency The dependency to be evaluated.
++     *
++     * @return array The prepared data for caching.
++     */
++    private function prepareCacheData($items, $dependency)
+     {
+         if ($dependency !== null && $this->serializer !== false) {
+             $dependency->evaluateDependency($this);
+@@ -360,7 +361,7 @@ public function multiAdd($items, $duration = 0, $dependency = null)
+             $data[$key] = $value;
+         }
+ 
+-        return $this->addValues($data, $duration);
++        return $data;
+     }
+ 
+     /**
+diff --git a/framework/messages/ja/yii.php b/framework/messages/ja/yii.php
+index 6fd6c3f9da5..b1b0f43cab8 100644
+--- a/framework/messages/ja/yii.php
++++ b/framework/messages/ja/yii.php
+@@ -26,8 +26,8 @@
+     ' and ' => ' および ',
+     '"{attribute}" does not support operator "{operator}".' => '"{attribute}" は演算子 "{operator}" をサポートしていません。',
+     '(not set)' => '(未設定)',
+-    'Action not found.' => '',
+-    'Aliases available: {aliases}' => '',
++    'Action not found.' => 'アクションがありません。',
++    'Aliases available: {aliases}' => '利用可能なエイリアス: {aliases}',
+     'An internal server error occurred.' => '内部サーバーエラーが発生しました。',
+     'Are you sure you want to delete this item?' => 'このアイテムを削除したいというのは本当ですか?',
+     'Condition for "{attribute}" should be either a value or valid operator specification.' => '"{attribute}" のための条件は値であるか有効な演算子の定義でなければなりません。',
+@@ -45,7 +45,7 @@
+     'Only files with these extensions are allowed: {extensions}.' => '次の拡張子を持つファイルだけが許可されています : {extensions}',
+     'Operator "{operator}" must be used with a search attribute.' => '演算子 "{operator}" はサーチ属性とともに使用されなければなりません。',
+     'Operator "{operator}" requires multiple operands.' => '演算子 "{operator}" は複数の被演算子を要求します。',
+-    'Options available: {options}' => '',
++    'Options available: {options}' => '利用可能なオプション: {options}',
+     'Page not found.' => 'ページが見つかりません。',
+     'Please fix the following errors:' => '次のエラーを修正してください :',
+     'Please upload a file.' => 'ファイルをアップロードしてください。',
+@@ -109,7 +109,7 @@
+     '{attribute} should contain at least {min, number} {min, plural, one{character} other{characters}}.' => '{attribute} は {min} 文字以上でなければいけません。',
+     '{attribute} should contain at most {max, number} {max, plural, one{character} other{characters}}.' => '{attribute} は {max} 文字以下でなければいけません。',
+     '{attribute} should contain {length, number} {length, plural, one{character} other{characters}}.' => '{attribute} は {length} 文字でなければいけません。',
+-    '{compareAttribute} is invalid.' => '',
++    '{compareAttribute} is invalid.' => '{compareAttribute} は無効です。',
+     '{delta, plural, =1{1 day} other{# days}}' => '{delta} 日間',
+     '{delta, plural, =1{1 hour} other{# hours}}' => '{delta} 時間',
+     '{delta, plural, =1{1 minute} other{# minutes}}' => '{delta} 分間',
