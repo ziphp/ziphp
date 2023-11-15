@@ -21,6 +21,6 @@
 *.ttf  binary
 
 /.github/          export-ignore
-/patch/            export-ignore
+/patches/          export-ignore
 /tests/            export-ignore
 
