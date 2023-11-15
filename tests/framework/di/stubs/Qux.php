@@ -23,7 +23,7 @@ class Qux extends BaseObject implements QuxInterface
         parent::__construct($config);
     }
 
-    public function quxMethod()
+    public function quxMethod(): void
     {
     }
 }

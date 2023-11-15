@@ -18,12 +18,12 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
 {
     public $driverName = 'cubrid';
 
-    public function testGetSchemaNames()
+    public function testGetSchemaNames(): void
     {
         $this->markTestSkipped('Schemas are not supported in CUBRID.');
     }
 
-    public function testGetPDOType()
+    public function testGetPDOType(): void
     {
         $values = [
             [null, \PDO::PARAM_NULL],
@@ -107,12 +107,12 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
         return $result;
     }
 
-    public function lowercaseConstraintsProvider()
+    public function lowercaseConstraintsProvider(): void
     {
         $this->markTestSkipped('This test hangs on CUBRID.');
     }
 
-    public function uppercaseConstraintsProvider()
+    public function uppercaseConstraintsProvider(): void
     {
         $this->markTestSkipped('This test hangs on CUBRID.');
     }

@@ -26,7 +26,7 @@ class DbMessageControllerTest extends BaseMessageControllerTest
      */
     protected static $db;
 
-    protected static function runConsoleAction($route, $params = [])
+    protected static function runConsoleAction($route, $params = []): void
     {
         if (Yii::$app === null) {
             new \yii\console\Application([
@@ -51,7 +51,7 @@ class DbMessageControllerTest extends BaseMessageControllerTest
         }
     }
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         $databases = static::getParam('databases');
@@ -65,7 +65,7 @@ class DbMessageControllerTest extends BaseMessageControllerTest
         static::runConsoleAction('migrate/up', ['migrationPath' => '@yii/i18n/migrations/', 'interactive' => false]);
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         static::runConsoleAction('migrate/down', ['migrationPath' => '@yii/i18n/migrations/', 'interactive' => false]);
         if (static::$db) {
@@ -75,7 +75,7 @@ class DbMessageControllerTest extends BaseMessageControllerTest
         parent::tearDownAfterClass();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
         Yii::$app = null;
@@ -125,7 +125,7 @@ class DbMessageControllerTest extends BaseMessageControllerTest
     /**
      * {@inheritdoc}
      */
-    protected function saveMessages($messages, $category)
+    protected function saveMessages($messages, $category): void
     {
         static::$db->createCommand()->checkIntegrity(false, '', 'message')->execute();
         static::$db->createCommand()->truncateTable('message')->execute();
@@ -165,7 +165,7 @@ class DbMessageControllerTest extends BaseMessageControllerTest
      * Source is marked instead of translation.
      * @depends testMerge
      */
-    public function testMarkObsoleteMessages()
+    public function testMarkObsoleteMessages(): void
     {
         $category = 'category';
 
@@ -187,7 +187,7 @@ class DbMessageControllerTest extends BaseMessageControllerTest
         $this->assertEquals($obsoleteTranslation, $messages[$obsoleteMessage], "Obsolete message was not marked properly. Command output:\n\n" . $out);
     }
 
-    public function testMessagesSorting()
+    public function testMessagesSorting(): void
     {
         $this->markTestSkipped('There\'s no need to order messages for database');
     }

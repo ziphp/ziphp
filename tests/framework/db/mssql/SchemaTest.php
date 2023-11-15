@@ -44,7 +44,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
         return $result;
     }
 
-    public function testGetStringFieldsSize()
+    public function testGetStringFieldsSize(): void
     {
         /* @var $db Connection */
         $db = $this->getConnection();
@@ -91,7 +91,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
      * @param $expectedName
      * @throws \yii\base\NotSupportedException
      */
-    public function testQuoteTableName($name, $expectedName)
+    public function testQuoteTableName($name, $expectedName): void
     {
         $schema = $this->getConnection()->getSchema();
         $quotedName = $schema->quoteTableName($name);
@@ -118,7 +118,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
      * @param $expectedName
      * @throws \yii\base\NotSupportedException
      */
-    public function testGetTableSchema($name, $expectedName)
+    public function testGetTableSchema($name, $expectedName): void
     {
         $schema = $this->getConnection()->getSchema();
         $tableSchema = $schema->getTableSchema($name);
@@ -163,17 +163,17 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
         $columns['bool_col']['dbType'] = 'tinyint';
         $columns['bool_col2']['dbType'] = 'tinyint';
 
-        array_walk($columns, static function (&$item) {
+        array_walk($columns, static function (&$item): void {
             $item['enumValues'] = [];
         });
 
-        array_walk($columns, static function (&$item, $name) {
+        array_walk($columns, static function (&$item, $name): void {
             if (!in_array($name, ['char_col', 'char_col2', 'char_col3'])) {
                 $item['size'] = null;
             }
         });
 
-        array_walk($columns, static function (&$item, $name) {
+        array_walk($columns, static function (&$item, $name): void {
             if (!in_array($name, ['char_col', 'char_col2', 'char_col3'])) {
                 $item['precision'] = null;
             }
@@ -182,7 +182,7 @@ class SchemaTest extends \yiiunit\framework\db\SchemaTest
         return $columns;
     }
 
-    public function testGetPrimaryKey()
+    public function testGetPrimaryKey(): void
     {
         $db = $this->getConnection();
 

@@ -17,7 +17,7 @@ class CommandTest extends \yiiunit\framework\db\CommandTest
 {
     protected $driverName = 'sqlsrv';
 
-    public function testAutoQuoting()
+    public function testAutoQuoting(): void
     {
         $db = $this->getConnection(false);
 
@@ -26,12 +26,12 @@ class CommandTest extends \yiiunit\framework\db\CommandTest
         $this->assertEquals('SELECT [id], [t].[name] FROM [customer] t', $command->sql);
     }
 
-    public function testPrepareCancel()
+    public function testPrepareCancel(): void
     {
         $this->markTestSkipped('MSSQL driver does not support this feature.');
     }
 
-    public function testBindParamValue()
+    public function testBindParamValue(): void
     {
         $db = $this->getConnection();
 
@@ -71,7 +71,7 @@ class CommandTest extends \yiiunit\framework\db\CommandTest
         $row = $db->createCommand($sql)->queryOne();
         $this->assertEquals($intCol, $row['int_col']);
         $this->assertEquals($charCol, trim($row['char_col']));
-        $this->assertEquals($floatCol, $row['float_col']);
+        $this->assertContains($row['float_col'], [$floatCol, sprintf('%.3f', $floatCol)]);
         $this->assertEquals($blobCol, $row['blob_col']);
         $this->assertEquals($numericCol, $row['numeric_col']);
 
@@ -96,7 +96,7 @@ class CommandTest extends \yiiunit\framework\db\CommandTest
         ];
     }
 
-    public function testAddDropDefaultValue()
+    public function testAddDropDefaultValue(): void
     {
         $db = $this->getConnection(false);
         $tableName = 'test_def';
@@ -130,7 +130,7 @@ class CommandTest extends \yiiunit\framework\db\CommandTest
         return $data;
     }
 
-    public function testUpsertVarbinary()
+    public function testUpsertVarbinary(): void
     {
         $db = $this->getConnection();
 

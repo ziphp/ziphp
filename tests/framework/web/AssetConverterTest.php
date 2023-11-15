@@ -20,7 +20,7 @@ class AssetConverterTest extends \yiiunit\TestCase
      */
     protected $tmpPath;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->mockApplication();
@@ -30,7 +30,7 @@ class AssetConverterTest extends \yiiunit\TestCase
         }
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         if (is_dir($this->tmpPath)) {
             FileHelper::removeDirectory($this->tmpPath);
@@ -40,7 +40,7 @@ class AssetConverterTest extends \yiiunit\TestCase
 
     // Tests :
 
-    public function testConvert()
+    public function testConvert(): void
     {
         $tmpPath = $this->tmpPath;
         file_put_contents($tmpPath . '/test.php', <<<EOF
@@ -62,7 +62,7 @@ EOF
     /**
      * @depends testConvert
      */
-    public function testForceConvert()
+    public function testForceConvert(): void
     {
         $tmpPath = $this->tmpPath;
         file_put_contents($tmpPath . '/test.php', <<<'EOF'

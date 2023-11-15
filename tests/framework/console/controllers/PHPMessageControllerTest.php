@@ -18,14 +18,14 @@ class PHPMessageControllerTest extends BaseMessageControllerTest
 {
     protected $messagePath;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->messagePath = Yii::getAlias('@yiiunit/runtime/test_messages');
         FileHelper::createDirectory($this->messagePath, 0777);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
         FileHelper::removeDirectory($this->messagePath);
@@ -59,7 +59,7 @@ class PHPMessageControllerTest extends BaseMessageControllerTest
     /**
      * {@inheritdoc}
      */
-    protected function saveMessages($messages, $category)
+    protected function saveMessages($messages, $category): void
     {
         $fileName = $this->getMessageFilePath($category);
         if (file_exists($fileName)) {
@@ -98,7 +98,7 @@ class PHPMessageControllerTest extends BaseMessageControllerTest
     // By default phpunit runs inherited test after inline tests, so `testCreateTranslation()` would be run after
     // `testCustomFileHeaderAndDocBlock()` (that would break `@depends` annotation). This ensures that
     // `testCreateTranslation() will be run before `testCustomFileHeaderAndDocBlock()`.
-    public function testCreateTranslation()
+    public function testCreateTranslation(): void
     {
         parent::testCreateTranslation();
     }
@@ -106,7 +106,7 @@ class PHPMessageControllerTest extends BaseMessageControllerTest
     /**
      * @depends testCreateTranslation
      */
-    public function testCustomFileHeaderAndDocBlock()
+    public function testCustomFileHeaderAndDocBlock(): void
     {
         $category = 'test_headers_category';
         $message = 'test message';
@@ -146,7 +146,7 @@ class PHPMessageControllerTest extends BaseMessageControllerTest
     /**
      * @dataProvider messageFileCategoriesDataProvider
      */
-    public function testRemoveUnusedBehavior($category, $isUnused, $removeUnused, $isExpectedToExist)
+    public function testRemoveUnusedBehavior($category, $isUnused, $removeUnused, $isExpectedToExist): void
     {
         $this->saveMessages(['test message' => 'test translation'], $category);
         $filePath = $this->getMessageFilePath($category);

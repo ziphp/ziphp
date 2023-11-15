@@ -30,7 +30,7 @@ abstract class DbTargetTest extends TestCase
 
     protected static $logTable = '{{%log}}';
 
-    protected static function runConsoleAction($route, $params = [])
+    protected static function runConsoleAction($route, $params = []): void
     {
         if (Yii::$app === null) {
             new \yii\console\Application([
@@ -64,7 +64,7 @@ abstract class DbTargetTest extends TestCase
         }
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $databases = static::getParam('databases');
@@ -78,7 +78,7 @@ abstract class DbTargetTest extends TestCase
         static::runConsoleAction('migrate/up', ['migrationPath' => '@yii/log/migrations/', 'interactive' => false]);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         self::getConnection()->createCommand()->truncateTable(self::$logTable)->execute();
         static::runConsoleAction('migrate/down', ['migrationPath' => '@yii/log/migrations/', 'interactive' => false]);
@@ -119,7 +119,7 @@ abstract class DbTargetTest extends TestCase
      * Tests that precision isn't lost for log timestamps.
      * @see https://github.com/yiisoft/yii2/issues/7384
      */
-    public function testTimestamp()
+    public function testTimestamp(): void
     {
         $logger = Yii::getLogger();
 
@@ -142,7 +142,7 @@ abstract class DbTargetTest extends TestCase
         static::assertEquals($time, $loggedTime);
     }
 
-    public function testTransactionRollBack()
+    public function testTransactionRollBack(): void
     {
         $db = self::getConnection();
         $logger = Yii::getLogger();

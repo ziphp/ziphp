@@ -2,7 +2,7 @@
 
 namespace yiiunit\framework\behaviors;
 
-use PHPUnit_Framework_MockObject_MockObject;
+use PHPUnit\Framework\MockObject\MockObject;
 use yii\base\Widget;
 use yii\behaviors\CacheableWidgetBehavior;
 use yiiunit\TestCase;
@@ -32,7 +32,7 @@ class CacheableWidgetBehaviorTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->initializeApplicationMock();
         $this->initializeWidgetMocks();
@@ -41,7 +41,7 @@ class CacheableWidgetBehaviorTest extends TestCase
     /**
      * @throws \Exception
      */
-    public function testWidgetIsRunWhenCacheIsEmpty()
+    public function testWidgetIsRunWhenCacheIsEmpty(): void
     {
         $this->simpleWidget
             ->expects($this->once())
@@ -54,7 +54,7 @@ class CacheableWidgetBehaviorTest extends TestCase
     /**
      * @throws \Exception
      */
-    public function testWidgetIsNotRunWhenCacheIsNotEmpty()
+    public function testWidgetIsNotRunWhenCacheIsNotEmpty(): void
     {
         $this->simpleWidget->cacheDuration = 0;
         $this->simpleWidget
@@ -69,7 +69,7 @@ class CacheableWidgetBehaviorTest extends TestCase
     /**
      * @throws \Exception
      */
-    public function testDynamicContent()
+    public function testDynamicContent(): void
     {
         $this->dynamicWidget->cacheDuration = 0;
         $this->dynamicWidget
@@ -86,7 +86,7 @@ class CacheableWidgetBehaviorTest extends TestCase
      * Initializes a mock application.
      *
      */
-    private function initializeApplicationMock()
+    private function initializeApplicationMock(): void
     {
         $this->mockApplication([
             'components' => [
@@ -105,7 +105,7 @@ class CacheableWidgetBehaviorTest extends TestCase
      * Initializes mock widgets.
      *
      */
-    private function initializeWidgetMocks()
+    private function initializeWidgetMocks(): void
     {
         $this->simpleWidget = $this->getWidgetMock(SimpleCacheableWidget::className());
         $this->dynamicWidget = $this->getWidgetMock(DynamicCacheableWidget::className());

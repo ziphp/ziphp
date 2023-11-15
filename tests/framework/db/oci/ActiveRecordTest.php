@@ -23,7 +23,7 @@ class ActiveRecordTest extends \yiiunit\framework\db\ActiveRecordTest
 {
     protected $driverName = 'oci';
 
-    public function testCastValues()
+    public function testCastValues(): void
     {
         // pass, because boolean casting is not available
         return;
@@ -54,7 +54,7 @@ class ActiveRecordTest extends \yiiunit\framework\db\ActiveRecordTest
         $this->assertEquals('0', $model->bool_col2);
     }
 
-    public function testDefaultValues()
+    public function testDefaultValues(): void
     {
         $model = new Type();
         $model->loadDefaultValues();
@@ -79,7 +79,7 @@ class ActiveRecordTest extends \yiiunit\framework\db\ActiveRecordTest
         $this->assertEquals('something', $model->char_col2);
     }
 
-    public function testFindAsArray()
+    public function testFindAsArray(): void
     {
         /* @var $customerClass \yii\db\ActiveRecordInterface */
         $customerClass = $this->getCustomerClass();
@@ -119,7 +119,7 @@ class ActiveRecordTest extends \yiiunit\framework\db\ActiveRecordTest
         $this->assertArrayHasKey('bool_status', $customers[2]);
     }
 
-    public function testPrimaryKeyAfterSave()
+    public function testPrimaryKeyAfterSave(): void
     {
         $record = new DefaultPk();
         $record->type = 'type';
@@ -127,7 +127,7 @@ class ActiveRecordTest extends \yiiunit\framework\db\ActiveRecordTest
         $this->assertEquals(5, $record->primaryKey);
     }
 
-    public function testMultiplePrimaryKeyAfterSave()
+    public function testMultiplePrimaryKeyAfterSave(): void
     {
         $record = new DefaultMultiplePk();
         $record->id = 5;
@@ -141,7 +141,7 @@ class ActiveRecordTest extends \yiiunit\framework\db\ActiveRecordTest
     /**
      * @see https://github.com/yiisoft/yii2/issues/9006
      */
-    public function testBit()
+    public function testBit(): void
     {
         $falseBit = BitValues::findOne(1);
         $this->assertEquals('0', $falseBit->val);
@@ -154,7 +154,7 @@ class ActiveRecordTest extends \yiiunit\framework\db\ActiveRecordTest
      * Some PDO implementations(e.g. cubrid) do not support boolean values.
      * Make sure this does not affect AR layer.
      */
-    public function testBooleanAttribute()
+    public function testBooleanAttribute(): void
     {
         /* @var $customerClass \yii\db\ActiveRecordInterface */
         $customerClass = $this->getCustomerClass();
@@ -186,7 +186,7 @@ class ActiveRecordTest extends \yiiunit\framework\db\ActiveRecordTest
      * @dataProvider aliasMethodProvider
      * @param string $aliasMethod whether alias is specified explicitly or using the query syntax {{@tablename}}
      */
-    public function testJoinWithAlias($aliasMethod)
+    public function testJoinWithAlias($aliasMethod): void
     {
         // left join and eager loading
         /** @var ActiveQuery $query */
@@ -255,7 +255,7 @@ class ActiveRecordTest extends \yiiunit\framework\db\ActiveRecordTest
 
         // joining sub relations
         $query = Order::find()->innerJoinWith([
-            'items i' => function ($q) use ($aliasMethod) {
+            'items i' => function ($q) use ($aliasMethod): void {
                 /* @var $q ActiveQuery */
                 if ($aliasMethod === 'explicit') {
                     $q->orderBy('{{i}}.id');
@@ -265,7 +265,7 @@ class ActiveRecordTest extends \yiiunit\framework\db\ActiveRecordTest
                     $q->orderBy($q->applyAlias('item', 'id'));
                 }
             },
-            'items.category c' => function ($q) use ($aliasMethod) {
+            'items.category c' => function ($q) use ($aliasMethod): void {
                 /* @var $q ActiveQuery */
                 if ($aliasMethod === 'explicit') {
                     $q->where('{{c}}.[[id]] = 2');

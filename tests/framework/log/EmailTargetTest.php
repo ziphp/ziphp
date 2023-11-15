@@ -24,7 +24,7 @@ class EmailTargetTest extends TestCase
     /**
      * Set up mailer.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->mailer = $this->getMockBuilder('yii\\mail\\BaseMailer')
@@ -35,19 +35,20 @@ class EmailTargetTest extends TestCase
     /**
      * @covers \yii\log\EmailTarget::init()
      */
-    public function testInitWithOptionTo()
+    public function testInitWithOptionTo(): void
     {
         $target = new EmailTarget(['mailer' => $this->mailer, 'message' => ['to' => 'developer1@example.com']]);
-        $this->assertInternalType('object', $target); // should be no exception during `init()`
+        $this->assertIsObject($target); // should be no exception during `init()`
     }
 
     /**
      * @covers \yii\log\EmailTarget::init()
-     * @expectedException \yii\base\InvalidConfigException
-     * @expectedExceptionMessage The "to" option must be set for EmailTarget::message.
      */
-    public function testInitWithoutOptionTo()
+    public function testInitWithoutOptionTo(): void
     {
+        $this->expectException(\yii\base\InvalidConfigException::class);
+        $this->expectExceptionMessage('The "to" option must be set for EmailTarget::message.');
+
         new EmailTarget(['mailer' => $this->mailer]);
     }
 
@@ -55,7 +56,7 @@ class EmailTargetTest extends TestCase
      * @covers \yii\log\EmailTarget::export()
      * @covers \yii\log\EmailTarget::composeMessage()
      */
-    public function testExportWithSubject()
+    public function testExportWithSubject(): void
     {
         $message1 = ['A very looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong message 1'];
         $message2 = ['A very looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong message 2'];
@@ -100,7 +101,7 @@ class EmailTargetTest extends TestCase
      * @covers \yii\log\EmailTarget::export()
      * @covers \yii\log\EmailTarget::composeMessage()
      */
-    public function testExportWithoutSubject()
+    public function testExportWithoutSubject(): void
     {
         $message1 = ['A veeeeery loooooooooooooooooooooooooooooooooooooooooooooooooooooooong message 3'];
         $message2 = ['Message 4'];
@@ -145,7 +146,7 @@ class EmailTargetTest extends TestCase
      *
      * See https://github.com/yiisoft/yii2/issues/14296
      */
-    public function testExportWithSendFailure()
+    public function testExportWithSendFailure(): void
     {
         $message = $this->getMockBuilder('yii\\mail\\BaseMessage')
             ->setMethods(['send'])

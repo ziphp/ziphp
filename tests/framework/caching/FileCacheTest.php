@@ -29,7 +29,7 @@ class FileCacheTest extends CacheTestCase
         return $this->_cacheInstance;
     }
 
-    public function testExpire()
+    public function testExpire(): void
     {
         $cache = $this->getCacheInstance();
 
@@ -41,7 +41,7 @@ class FileCacheTest extends CacheTestCase
         $this->assertFalse($cache->get('expire_test'));
     }
 
-    public function testExpireAdd()
+    public function testExpireAdd(): void
     {
         $cache = $this->getCacheInstance();
 
@@ -53,7 +53,7 @@ class FileCacheTest extends CacheTestCase
         $this->assertFalse($cache->get('expire_testa'));
     }
 
-    public function testKeyPrefix()
+    public function testKeyPrefix(): void
     {
         $keyPrefix = 'foobar';
         $key = uniqid('uid-cache_');
@@ -79,11 +79,11 @@ class FileCacheTest extends CacheTestCase
         $this->assertTrue($refMethodSet->invoke($cache, $key, $value));
         $this->assertContains($keyPrefix, basename($cacheFile));
         $this->assertEquals($expectedDirectoryName, basename(dirname($cacheFile)), $cacheFile);
-        $this->assertTrue(is_dir(dirname($cacheFile)), 'File not found ' . $cacheFile);
+        $this->assertDirectoryExists(dirname($cacheFile), 'File not found ' . $cacheFile);
         $this->assertEquals($value, $refMethodGet->invoke($cache, $key));
     }
 
-    public function testCacheRenewalOnDifferentOwnership()
+    public function testCacheRenewalOnDifferentOwnership(): void
     {
         $TRAVIS_SECOND_USER = getenv('TRAVIS_SECOND_USER');
         if (empty($TRAVIS_SECOND_USER)) {

@@ -196,17 +196,17 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         return $result;
     }
 
-    public function checksProvider()
+    public function checksProvider(): void
     {
         $this->markTestSkipped('Adding/dropping check constraints is not supported in MySQL.');
     }
 
-    public function defaultValuesProvider()
+    public function defaultValuesProvider(): void
     {
         $this->markTestSkipped('Adding/dropping default constraints is not supported in MySQL.');
     }
 
-    public function testResetSequence()
+    public function testResetSequence(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -343,7 +343,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         return $items;
     }
 
-    public function testIssue17449()
+    public function testIssue17449(): void
     {
         $db = $this->getConnection();
         $pdo = $db->pdo;
@@ -370,7 +370,7 @@ MySqlStatement;
     /**
      * Test for issue https://github.com/yiisoft/yii2/issues/14663
      */
-    public function testInsertInteger()
+    public function testInsertInteger(): void
     {
         $db = $this->getConnection();
         $command = $db->createCommand();
@@ -395,7 +395,7 @@ MySqlStatement;
     /**
      * Test for issue https://github.com/yiisoft/yii2/issues/15500
      */
-    public function testDefaultValues()
+    public function testDefaultValues(): void
     {
         $db = $this->getConnection();
         $command = $db->createCommand();

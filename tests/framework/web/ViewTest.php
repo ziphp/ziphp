@@ -16,12 +16,12 @@ use yiiunit\TestCase;
  */
 class ViewTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
     }
 
-    public function testRegisterJsVar()
+    public function testRegisterJsVar(): void
     {
         $this->mockWebApplication([
             'components' => [
@@ -47,7 +47,7 @@ class ViewTest extends TestCase
         $this->assertContains('<script>var objectTest = {"number":42,"question":"Unknown"};</script></head>', $html);
     }
 
-    public function testRegisterJsFileWithAlias()
+    public function testRegisterJsFileWithAlias(): void
     {
         $this->mockWebApplication([
             'components' => [
@@ -80,7 +80,7 @@ class ViewTest extends TestCase
         $this->assertContains('<script src="/baseUrl/js/somefile.js"></script></body>', $html);
     }
 
-    public function testRegisterCssFileWithAlias()
+    public function testRegisterCssFileWithAlias(): void
     {
         $this->mockWebApplication([
             'components' => [
@@ -104,7 +104,7 @@ class ViewTest extends TestCase
         $this->assertContains('<link href="/baseUrl/css/somefile.css" rel="stylesheet"></head>', $html);
     }
 
-    public function testRegisterregisterCsrfMetaTags()
+    public function testRegisterregisterCsrfMetaTags(): void
     {
         $this->mockWebApplication([
             'components' => [
@@ -152,7 +152,7 @@ class ViewTest extends TestCase
         return $matches[1];
     }
 
-    private function setUpAliases()
+    private function setUpAliases(): void
     {
         \Yii::setAlias('@web', '/');
         \Yii::setAlias('@webroot', '@yiiunit/data/web');
@@ -161,7 +161,7 @@ class ViewTest extends TestCase
         \Yii::setAlias('@testSourcePath', '@webroot/assetSources');
     }
 
-    public function testAppendTimestampForRegisterJsFile()
+    public function testAppendTimestampForRegisterJsFile(): void
     {
         $this->mockWebApplication([
             'components' => [
@@ -325,7 +325,7 @@ class ViewTest extends TestCase
 
     }
 
-    public function testAppendTimestampForRegisterCssFile()
+    public function testAppendTimestampForRegisterCssFile(): void
     {
         $this->mockWebApplication([
             'components' => [

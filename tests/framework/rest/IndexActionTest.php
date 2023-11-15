@@ -18,7 +18,7 @@ use yiiunit\TestCase;
  */
 class IndexActionTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->mockWebApplication([
@@ -39,7 +39,7 @@ class IndexActionTest extends TestCase
         Yii::$app->getDb()->createCommand()->createTable(IndexActionModel::tableName(), $columns)->execute();
     }
 
-    public function testPrepareSearchQueryAttribute()
+    public function testPrepareSearchQueryAttribute(): void
     {
         $sql = '';
         Yii::$app->controller = new RestController(
@@ -51,7 +51,7 @@ class IndexActionTest extends TestCase
                     'class' => IndexAction::className(),
                     'modelClass' => IndexActionModel::className(),
                     'prepareSearchQuery' => function ($query, $requestParams) use (&$sql) {
-                        $this->assertTrue($query instanceof Query);
+                        $this->assertInstanceOf(Query::class, $query);
                         $sql = $query->createCommand()->getRawSql();
 
                         return $query;
@@ -81,7 +81,7 @@ class IndexActionTest extends TestCase
         $expectedPaginationDefaultPageSize = null,
         $expectedSortOrders = [],
         $expectedSortDefaultOrder = null
-    ) {
+    ): void {
         Yii::$app->getRequest()->setBodyParams([
             'per-page' => 11,
             'sort' => '-test-sort'

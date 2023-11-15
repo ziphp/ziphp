@@ -65,7 +65,7 @@ class FakedValidationModel extends Model
         return parent::__get($name);
     }
 
-    public function __set($name, $value)
+    public function __set($name, $value): void
     {
         if (strncasecmp($name, 'attr', 4) === 0) {
             $this->attr[$name] = $value;

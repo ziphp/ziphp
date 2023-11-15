@@ -14,7 +14,7 @@ use yii\widgets\Block;
  */
 class BlockTest extends \yiiunit\TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -24,13 +24,13 @@ class BlockTest extends \yiiunit\TestCase
     /**
      * @see https://github.com/yiisoft/yii2/issues/15536
      */
-    public function testShouldTriggerInitEvent()
+    public function testShouldTriggerInitEvent(): void
     {
         $initTriggered = false;
 
         $block = new Block(
             [
-                'on init' => function () use (&$initTriggered) {
+                'on init' => function () use (&$initTriggered): void {
                     $initTriggered = true;
                 }
             ]

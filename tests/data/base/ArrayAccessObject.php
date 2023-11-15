@@ -65,7 +65,7 @@ class ArrayAccessObject extends TraversableObject implements \ArrayAccess
      * @since 2.0.14.1
      */
     #[\ReturnTypeWillChange]
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->data[$offset] = $value;
     }
@@ -81,7 +81,7 @@ class ArrayAccessObject extends TraversableObject implements \ArrayAccess
      * @since 2.0.14.1
      */
     #[\ReturnTypeWillChange]
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->data[$offset]);
     }

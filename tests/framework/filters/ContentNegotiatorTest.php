@@ -20,7 +20,7 @@ use yiiunit\TestCase;
  */
 class ContentNegotiatorTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -38,7 +38,7 @@ class ContentNegotiatorTest extends TestCase
         return [$action, $filter];
     }
 
-    public function testWhenLanguageGETParamIsArray()
+    public function testWhenLanguageGETParamIsArray(): void
     {
         list($action, $filter) = $this->mockActionAndFilter();
 
@@ -56,11 +56,12 @@ class ContentNegotiatorTest extends TestCase
     }
 
     /**
-     * @expectedException yii\web\BadRequestHttpException
-     * @expectedExceptionMessageRegExp |Invalid data received for GET parameter '.+'|
      */
-    public function testWhenFormatGETParamIsArray()
+    public function testWhenFormatGETParamIsArray(): void
     {
+        $this->expectException(\yii\web\BadRequestHttpException::class);
+        $this->expectExceptionMessageMatches('|Invalid data received for GET parameter \'.+\'|');
+
         list($action, $filter) = $this->mockActionAndFilter();
 
         $_SERVER['REQUEST_METHOD'] = 'GET';
@@ -77,7 +78,7 @@ class ContentNegotiatorTest extends TestCase
         $filter->beforeAction($action);
     }
 
-    public function testVaryHeader()
+    public function testVaryHeader(): void
     {
         list($action, $filter) = $this->mockActionAndFilter();
         $filter->formats = [];
@@ -118,7 +119,7 @@ class ContentNegotiatorTest extends TestCase
         $this->assertContains('Accept-Language', $varyHeader);
     }
 
-    public function testNegotiateContentType()
+    public function testNegotiateContentType(): void
     {
         $filter = new ContentNegotiator([
             'formats' => [

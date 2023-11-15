@@ -24,7 +24,7 @@ class DbDependencyTest extends DatabaseTestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -38,7 +38,7 @@ class DbDependencyTest extends DatabaseTestCase
         $db->createCommand()->insert('dependency_item', ['value' => 'initial'])->execute();
     }
 
-    public function testQueryOneIsExecutedWhenQueryCacheEnabled()
+    public function testQueryOneIsExecutedWhenQueryCacheEnabled(): void
     {
         $db = $this->getConnection(false);
         $cache = new ArrayCache();
@@ -59,7 +59,7 @@ class DbDependencyTest extends DatabaseTestCase
         $this->assertTrue($dependency->isChanged($cache));
     }
 
-    public function testQueryOneIsExecutedWhenQueryCacheDisabled()
+    public function testQueryOneIsExecutedWhenQueryCacheDisabled(): void
     {
         $db = $this->getConnection(false);
         $cache = new ArrayCache();
@@ -80,7 +80,7 @@ class DbDependencyTest extends DatabaseTestCase
         $this->assertTrue($dependency->isChanged($cache));
     }
 
-    public function testMissingSqlThrowsException()
+    public function testMissingSqlThrowsException(): void
     {
         $this->expectException('\yii\base\InvalidConfigException');
 

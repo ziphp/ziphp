@@ -19,7 +19,7 @@ class DbCacheTest extends CacheTestCase
     private $_cacheInstance;
     private $_connection;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         if (!extension_loaded('pdo') || !extension_loaded('pdo_mysql')) {
             $this->markTestSkipped('pdo and pdo_mysql extensions are required.');
@@ -78,7 +78,7 @@ class DbCacheTest extends CacheTestCase
         return $this->_cacheInstance;
     }
 
-    public function testExpire()
+    public function testExpire(): void
     {
         $cache = $this->getCacheInstance();
 
@@ -90,7 +90,7 @@ class DbCacheTest extends CacheTestCase
         $this->assertFalse($cache->get('expire_test'));
     }
 
-    public function testExpireAdd()
+    public function testExpireAdd(): void
     {
         $cache = $this->getCacheInstance();
 
@@ -102,7 +102,7 @@ class DbCacheTest extends CacheTestCase
         $this->assertFalse($cache->get('expire_testa'));
     }
 
-    public function testSynchronousSetWithTheSameKey()
+    public function testSynchronousSetWithTheSameKey(): void
     {
         $KEY = 'sync-test-key';
         $VALUE = 'sync-test-value';

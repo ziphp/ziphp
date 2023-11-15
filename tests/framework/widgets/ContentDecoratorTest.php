@@ -14,7 +14,7 @@ use yii\widgets\ContentDecorator;
  */
 class ContentDecoratorTest extends \yiiunit\TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -24,14 +24,14 @@ class ContentDecoratorTest extends \yiiunit\TestCase
     /**
      * @see https://github.com/yiisoft/yii2/issues/15536
      */
-    public function testShouldTriggerInitEvent()
+    public function testShouldTriggerInitEvent(): void
     {
         $initTriggered = false;
 
         $contentDecorator = new ContentDecorator(
             [
                 'viewFile' => '@app/views/layouts/base.php',
-                'on init' => function () use (&$initTriggered) {
+                'on init' => function () use (&$initTriggered): void {
                     $initTriggered = true;
                 }
             ]

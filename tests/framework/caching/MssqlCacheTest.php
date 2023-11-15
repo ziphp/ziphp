@@ -21,7 +21,7 @@ class MssqlCacheTest extends CacheTestCase
     private $_cacheInstance;
     private $_connection;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         if (!extension_loaded('pdo') || !extension_loaded('pdo_sqlsrv')) {
             $this->markTestSkipped('pdo and pdo_mssql extensions are required.');
@@ -79,7 +79,7 @@ class MssqlCacheTest extends CacheTestCase
         return $this->_cacheInstance;
     }
 
-    public function testExpire()
+    public function testExpire(): void
     {
         $cache = $this->getCacheInstance();
 
@@ -91,7 +91,7 @@ class MssqlCacheTest extends CacheTestCase
         $this->assertFalse($cache->get('expire_test'));
     }
 
-    public function testExpireAdd()
+    public function testExpireAdd(): void
     {
         $cache = $this->getCacheInstance();
 
@@ -103,7 +103,7 @@ class MssqlCacheTest extends CacheTestCase
         $this->assertFalse($cache->get('expire_testa'));
     }
 
-    public function testSynchronousSetWithTheSameKey()
+    public function testSynchronousSetWithTheSameKey(): void
     {
         $KEY = 'sync-test-key';
         $VALUE = 'sync-test-value';

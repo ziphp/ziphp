@@ -27,7 +27,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         '\\\\' => '[\\]',
     ];
 
-    public function testOffsetLimit()
+    public function testOffsetLimit(): void
     {
         $expectedQuerySql = 'SELECT [id] FROM [example] ORDER BY (SELECT NULL) OFFSET 5 ROWS FETCH NEXT 10 ROWS ONLY';
         $expectedQueryParams = [];
@@ -41,7 +41,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         $this->assertEquals($expectedQueryParams, $actualQueryParams);
     }
 
-    public function testLimit()
+    public function testLimit(): void
     {
         $expectedQuerySql = 'SELECT [id] FROM [example] ORDER BY (SELECT NULL) OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY';
         $expectedQueryParams = [];
@@ -55,7 +55,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         $this->assertEquals($expectedQueryParams, $actualQueryParams);
     }
 
-    public function testOffset()
+    public function testOffset(): void
     {
         $expectedQuerySql = 'SELECT [id] FROM [example] ORDER BY (SELECT NULL) OFFSET 10 ROWS';
         $expectedQueryParams = [];
@@ -127,7 +127,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         return $db->createCommand($sql)->execute();
     }
 
-    public function testCommentAdditionOnTableAndOnColumn()
+    public function testCommentAdditionOnTableAndOnColumn(): void
     {
         $table = 'profile';
         $tableComment = 'A comment for profile table.';
@@ -174,7 +174,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         ], $result[0]);
     }
 
-    public function testCommentAdditionOnQuotedTableOrColumn()
+    public function testCommentAdditionOnQuotedTableOrColumn(): void
     {
         $table = 'stranger \'table';
         $tableComment = 'A comment for stranger \'table.';
@@ -199,7 +199,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         ], $resultColumn[0]);
     }
 
-    public function testCommentRemovalFromTableAndFromColumn()
+    public function testCommentRemovalFromTableAndFromColumn(): void
     {
         $table = 'profile';
         $tableComment = 'A comment for profile table.';
@@ -216,7 +216,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         $this->assertEquals([], $result);
     }
 
-    public function testCommentRemovalFromQuotedTableOrColumn()
+    public function testCommentRemovalFromQuotedTableOrColumn(): void
     {
         $table = 'stranger \'table';
         $tableComment = 'A comment for stranger \'table.';
@@ -233,12 +233,12 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         $this->assertEquals([], $result);
     }
 
-    public function testCommentColumn()
+    public function testCommentColumn(): void
     {
         $this->markTestSkipped("Testing the behavior, not sql generation anymore.");
     }
 
-    public function testCommentTable()
+    public function testCommentTable(): void
     {
         $this->markTestSkipped("Testing the behavior, not sql generation anymore.");
     }
@@ -360,7 +360,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         ];
     }
 
-    public function testResetSequence()
+    public function testResetSequence(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -446,7 +446,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         return $data;
     }
 
-    public function testAlterColumn()
+    public function testAlterColumn(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -638,7 +638,7 @@ ALTER TABLE [foo1] ADD CONSTRAINT [UQ_foo1_bar] UNIQUE ([bar])";
         $this->assertEquals($expected, $sql);
     }
 
-    public function testAlterColumnOnDb()
+    public function testAlterColumnOnDb(): void
     {
         $connection = $this->getConnection();
 
@@ -656,7 +656,7 @@ ALTER TABLE [foo1] ADD CONSTRAINT [UQ_foo1_bar] UNIQUE ([bar])";
         $this->assertEquals(false, $schema->getColumn('bar')->allowNull);
     }
 
-    public function testAlterColumnWithNull()
+    public function testAlterColumnWithNull(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -688,7 +688,7 @@ ALTER TABLE [foo1] ADD CONSTRAINT [DF_foo1_bar] DEFAULT NULL FOR [bar]";
         $this->assertEquals($expected, $sql);
     }
 
-    public function testAlterColumnWithExpression()
+    public function testAlterColumnWithExpression(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -720,7 +720,7 @@ ALTER TABLE [foo1] ADD CONSTRAINT [DF_foo1_bar] DEFAULT CAST(GETDATE() AS INT) F
         $this->assertEquals($expected, $sql);
     }
 
-    public function testAlterColumnWithCheckConstraintOnDb()
+    public function testAlterColumnWithCheckConstraintOnDb(): void
     {
         $connection = $this->getConnection();
 
@@ -734,7 +734,7 @@ ALTER TABLE [foo1] ADD CONSTRAINT [DF_foo1_bar] DEFAULT CAST(GETDATE() AS INT) F
         $this->assertEquals(1, $connection->createCommand($sql)->execute());
     }
 
-    public function testAlterColumnWithCheckConstraintOnDbWithException()
+    public function testAlterColumnWithCheckConstraintOnDbWithException(): void
     {
         $connection = $this->getConnection();
 
@@ -746,7 +746,7 @@ ALTER TABLE [foo1] ADD CONSTRAINT [DF_foo1_bar] DEFAULT CAST(GETDATE() AS INT) F
         $this->assertEquals(1, $connection->createCommand($sql)->execute());
     }
 
-    public function testAlterColumnWithUniqueConstraintOnDbWithException()
+    public function testAlterColumnWithUniqueConstraintOnDbWithException(): void
     {
         $connection = $this->getConnection();
 
@@ -760,7 +760,7 @@ ALTER TABLE [foo1] ADD CONSTRAINT [DF_foo1_bar] DEFAULT CAST(GETDATE() AS INT) F
         $this->assertEquals(1, $connection->createCommand($sql)->execute());
     }
 
-    public function testDropColumn()
+    public function testDropColumn(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -791,7 +791,7 @@ ALTER TABLE [foo1] DROP COLUMN [bar]";
         $this->assertEquals($expected, $sql);
     }
 
-    public function testDropColumnOnDb()
+    public function testDropColumnOnDb(): void
     {
         $connection = $this->getConnection();
 

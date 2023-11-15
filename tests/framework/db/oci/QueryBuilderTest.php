@@ -80,12 +80,12 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
      * @dataProvider defaultValuesProvider
      * @param string $sql
      */
-    public function testAddDropDefaultValue($sql, \Closure $builder)
+    public function testAddDropDefaultValue($sql, \Closure $builder): void
     {
         $this->markTestSkipped('Adding/dropping default constraints is not supported in Oracle.');
     }
 
-    public function testCommentColumn()
+    public function testCommentColumn(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -98,7 +98,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         $this->assertEquals($this->replaceQuotes($expected), $sql);
     }
 
-    public function testCommentTable()
+    public function testCommentTable(): void
     {
         $qb = $this->getQueryBuilder();
 
@@ -111,7 +111,7 @@ class QueryBuilderTest extends \yiiunit\framework\db\QueryBuilderTest
         $this->assertEquals($this->replaceQuotes($expected), $sql);
     }
 
-    public function testExecuteResetSequence()
+    public function testExecuteResetSequence(): void
     {
         $db = $this->getConnection();
         $qb = $this->getQueryBuilder();
@@ -282,7 +282,7 @@ WHERE rownum <= 1) "EXCLUDED" ON ("T_upsert"."email"="EXCLUDED"."email") WHEN NO
     /**
      * Dummy test to speed up QB's tests which rely on DB schema
      */
-    public function testInitFixtures()
+    public function testInitFixtures(): void
     {
         $this->assertInstanceOf('yii\db\QueryBuilder', $this->getQueryBuilder(true, true));
     }
@@ -298,7 +298,7 @@ WHERE rownum <= 1) "EXCLUDED" ON ("T_upsert"."email"="EXCLUDED"."email") WHEN NO
      * @throws \yii\base\NotSupportedException
      * @throws \Exception
      */
-    public function testUpsert($table, $insertColumns, $updateColumns, $expectedSQL, $expectedParams)
+    public function testUpsert($table, $insertColumns, $updateColumns, $expectedSQL, $expectedParams): void
     {
         $actualParams = [];
         $actualSQL = $this->getQueryBuilder(true, $this->driverName === 'sqlite')->upsert($table, $insertColumns, $updateColumns, $actualParams);

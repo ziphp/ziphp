@@ -7,7 +7,7 @@ use yii\web\Session;
 
 trait SessionTestTrait
 {
-    public function initStrictModeTest($class)
+    public function initStrictModeTest($class): void
     {
         /** @var Session $session */
         $session = new $class();
@@ -28,7 +28,7 @@ trait SessionTestTrait
     /**
      * @param string $class
      */
-    protected function useStrictModeTest($class)
+    protected function useStrictModeTest($class): void
     {
         /** @var Session $session */
         $session = new $class();
