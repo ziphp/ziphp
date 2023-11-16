@@ -60,6 +60,7 @@
         "allow-plugins": {
             "ziphp/zipper": true
         },
+        "optimize-autoloader": true,
         "sort-packages": true
     },
     "bin": [
