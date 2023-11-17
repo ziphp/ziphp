@@ -279,7 +279,7 @@ abstract class Application extends Module
     protected function bootstrap()
     {
         if ($this->extensions === null) {
-            $file = Yii::getAlias('@vendor/yiisoft/extensions.php');
+            $file = Yii::getAlias('@vendor/ziphp/extensions.php');
             $this->extensions = is_file($file) ? include $file : [];
         }
         foreach ($this->extensions as $extension) {
