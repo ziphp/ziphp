@@ -60,8 +60,7 @@ class ApplicationTest extends TestCase
                 },
             ],
         ]);
-        $this->assertSame('extensions.php does not exists', Yii::getLogger()->messages[0][0]);
-        $this->assertSame('Bootstrap with yii\base\Component', Yii::getLogger()->messages[0][1]);
+        $this->assertSame('Bootstrap with yii\base\Component', Yii::getLogger()->messages[0][0]);
         $this->assertSame('Bootstrap with yiiunit\framework\base\BootstrapComponentMock::bootstrap()', Yii::getLogger()->messages[1][0]);
         $this->assertSame('Loading module: moduleX', Yii::getLogger()->messages[2][0]);
         $this->assertSame('Bootstrap with yii\base\Module', Yii::getLogger()->messages[3][0]);
