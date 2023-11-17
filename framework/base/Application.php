@@ -281,9 +281,6 @@ abstract class Application extends Module
         if ($this->extensions === null) {
             $file = Yii::getAlias('@vendor/ziphp/extensions.php');
             $this->extensions = is_file($file) ? include $file : [];
-            if (!is_file($file)) {
-                Yii::warning('extensions.php does not exists', __METHOD__);
-            }
         }
         foreach ($this->extensions as $extension) {
             if (!empty($extension['alias'])) {
