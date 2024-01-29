@@ -922,7 +922,7 @@ EOT;
 
         try {
             $all = $command->queryAll();
-        } catch (Exception) {
+        } catch (Exception $e) {
             $all = [];
         }
 
