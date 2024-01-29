@@ -51,7 +51,7 @@ class ModelController extends Controller
     public string $modelExtends = '\\Zpp\\Models\\BaseModel';
     public string $modelDir = '@app/src/Models';
 
-    public array $identityTables = ['usr', 'user', 'yh'];
+    public array $identityTables = ['usr', 'user'];
 
     public static array $specialKeys = [
         'id' => 'ID',
