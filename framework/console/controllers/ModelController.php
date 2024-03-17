@@ -578,6 +578,7 @@ class ModelController extends Controller
                 'max' => $this->getColumnEdge($column),
                 'min' => $this->getColumnEdge($column, self::EDGE_MIN),
             ];
+            $this->_typeCastAttributes[$column->name] = 'TYPE_FLOAT';
         }
 
         // varchar
