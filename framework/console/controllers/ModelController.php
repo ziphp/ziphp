@@ -525,14 +525,29 @@ class ModelController extends Controller
     {
         $rootDir = dirname(Yii::getAlias('@vendor'));
 
-        $cmd = "php D:/phpcsfixer.phar --version  2>&1";
+        $phpcsfixerPaths = [
+            'D:/phpcsfixer.phar',
+            'D:/php-cs-fixer.phar',
+            "$rootDir/php-cs-fixer.phar",
+            '/usr/local/bin/php-cs-fixer',
+        ];
+
+        $phpcsfixer = $phpcsfixerPaths[0];
+        foreach ($phpcsfixerPaths as $phpcsfixerPath) {
+            if (file_exists($phpcsfixerPath)) {
+                $phpcsfixer = $phpcsfixerPath;
+                break;
+            }
+        }
+
+        $cmd = "php $phpcsfixer --version  2>&1";
         exec($cmd, $output, $outCode);
         echo "exec: $cmd" . "\n",
             implode("\n", $output)
             . "\nresult code: $outCode\n";
         unset($cmd, $output, $outCode);
 
-        $cmd = "php D:/phpcsfixer.phar --config=$rootDir/.php-cs-fixer.dist.php fix $file  2>&1";
+        $cmd = "php $phpcsfixer --config=$rootDir/.php-cs-fixer.dist.php fix $file  2>&1";
         exec($cmd, $output, $outCode);
         echo implode("\n", $output) . "\nresult code: $outCode\n";
         echo "exec: $cmd" . "\n",
