@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: "PHP 8.2 on ubuntu 22.04"
+    name: "PHP 8.2 on ubuntu-latest"
     if: ${{ !contains(github.event.head_commit.message, 'skip composer') }}
 
     runs-on: ubuntu-latest
@@ -43,4 +43,4 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "auto renew composer.lock"
+          commit_message: "composer.lock"
