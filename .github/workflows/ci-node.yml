@@ -30,7 +30,7 @@ jobs:
         run: composer require "bower-asset/jquery:3.6.*@stable"
 
       - name: Install node.js.
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 6
 
